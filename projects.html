@@ -201,7 +201,7 @@
   <div class="page-header-left">
     <div class="eyebrow">AWS Projects</div>
     <h1 class="page-title">Hands-on cloud labs</h1>
-    <p class="page-sub">Sixteen real AWS projects built from scratch. Click any project to read the full write-up with embedded documentation.</p>
+    <p class="page-sub">Seventeen real AWS projects built from scratch. Click any project to read the full write-up with embedded documentation.</p>
   </div>
   <a href="index.html" class="back-btn">← Back to Portfolio</a>
 </div>
@@ -353,6 +353,15 @@
       <div class="proj-btn-text">
         <div class="proj-btn-num">16</div>
         <div class="proj-btn-title">Build a Three-Tier Web App</div>
+      </div>
+      <span class="proj-btn-arrow">›</span>
+    </button>
+
+    <button class="proj-btn" onclick="showProject('p17', this)">
+      <div class="proj-btn-icon" style="background:#F0FDF4;">🗃️</div>
+      <div class="proj-btn-text">
+        <div class="proj-btn-num">17</div>
+        <div class="proj-btn-title">Connect a Web App to Amazon Aurora</div>
       </div>
       <span class="proj-btn-arrow">›</span>
     </button>
@@ -825,6 +834,36 @@
         </div>
         <div class="pdf-embed-wrap">
           <iframe src="projects/building_a_tier_three_webapp.pdf" title="Build a Three-Tier Web App PDF"></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PROJECT 17 -->
+    <div class="project-view" id="p17">
+      <div class="pv-header">
+        <div class="pv-top">
+          <div class="pv-icon" style="background:#F0FDF4;">🗃️</div>
+          <div class="pv-meta">
+            <div class="pv-num">Project 17</div>
+            <div class="pv-title">Connect a Web App to Amazon Aurora</div>
+          </div>
+        </div>
+        <p class="pv-desc">Created an Amazon Aurora MySQL cluster and connected it to an EC2 instance acting as a web server. Learned how Aurora clusters use a primary instance and read replicas to ensure high availability, and how AWS automatically handles VPC, DB subnet group, and security group configuration when linking EC2 to RDS.</p>
+        <div class="pv-tags">
+          <span class="tag">Aurora</span><span class="tag">RDS</span><span class="tag">EC2</span><span class="tag">MySQL</span><span class="tag">Relational Databases</span><span class="tag">VPC</span>
+        </div>
+      </div>
+      <div class="pv-pdf-wrap">
+        <div class="pv-pdf-toolbar">
+          <div class="pv-pdf-filename"><span>📄</span> connect_a_web_app_to_amazon_aurora.pdf</div>
+          <div class="pv-pdf-actions">
+            <a class="pdf-action-btn btn-open" href="projects/connect_a_web_app_to_amazon_aurora.pdf" target="_blank">Open in Tab ↗</a>
+            <a class="pdf-action-btn btn-download" href="projects/connect_a_web_app_to_amazon_aurora.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="pdf-embed-wrap">
+          <iframe src="projects/connect_a_web_app_to_amazon_aurora.pdf" title="Connect a Web App to Amazon Aurora PDF"></iframe>
         </div>
       </div>
     </div>
