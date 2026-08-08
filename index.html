@@ -1,627 +1,288 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Melvin Green — Cloud Support Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue-50:  #EFF6FF;
-    --blue-100: #DBEAFE;
-    --blue-200: #BFDBFE;
-    --blue-400: #60A5FA;
-    --blue-500: #3B82F6;
-    --blue-600: #2563EB;
-    --blue-700: #1D4ED8;
-    --gray-50:  #F8FAFC;
-    --gray-100: #F1F5F9;
-    --gray-200: #E2E8F0;
-    --gray-300: #CBD5E1;
-    --gray-400: #94A3B8;
-    --gray-500: #64748B;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1E293B;
-    --gray-900: #0F172A;
-    --white:    #FFFFFF;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--gray-50); color: var(--gray-800); font-size: 16px; line-height: 1.6; }
-
-  nav {
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-200);
-    position: sticky; top: 0; z-index: 100;
-    padding: 0 2rem; height: 64px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-brand { display: flex; align-items: center; gap: 10px; }
-  .nav-avatar { width: 36px; height: 36px; background: var(--blue-600); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; }
-  .nav-name { font-size: 15px; font-weight: 700; color: var(--gray-900); }
-  .nav-links { display: flex; align-items: center; gap: 4px; }
-  .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-500); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
-  .nav-links a:hover { color: var(--gray-900); background: var(--gray-100); }
-  .nav-cta { background: var(--blue-600) !important; color: #fff !important; font-weight: 600 !important; }
-  .nav-cta:hover { background: var(--blue-700) !important; }
-
-  .hero { max-width: 1100px; margin: 0 auto; padding: 80px 2rem 64px; display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center; }
-  .hero-available { display: inline-flex; align-items: center; gap: 8px; background: #ECFDF5; color: #065F46; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px; margin-bottom: 20px; border: 1px solid #A7F3D0; }
-  .hero-available::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
-  .hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.1rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: var(--gray-900); margin-bottom: 20px; }
-  .hero h1 .hi { color: var(--blue-600); }
-  .hero-sub { font-size: 1.02rem; color: var(--gray-500); line-height: 1.75; margin-bottom: 32px; max-width: 500px; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 12px; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; font-family: inherit; }
-  .btn-primary { background: var(--blue-600); color: #fff; box-shadow: 0 1px 3px rgba(37,99,235,0.3), 0 4px 12px rgba(37,99,235,0.2); }
-  .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 2px 6px rgba(37,99,235,0.4), 0 8px 20px rgba(37,99,235,0.25); }
-  .btn-ghost { background: var(--white); color: var(--gray-700); border: 1.5px solid var(--gray-200); box-shadow: var(--shadow-sm); }
-  .btn-ghost:hover { border-color: var(--gray-300); transform: translateY(-1px); }
-
-  .hero-card { background: var(--white); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-100); }
-  .hc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-100); }
-  .hc-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue-500), var(--blue-700)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0; }
-  .hc-name { font-size: 16px; font-weight: 700; color: var(--gray-900); }
-  .hc-role { font-size: 12px; color: var(--gray-400); font-weight: 500; margin-top: 2px; }
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
-  .stat-box { background: var(--gray-50); border-radius: 12px; padding: 14px; border: 1px solid var(--gray-100); }
-  .stat-num { font-size: 22px; font-weight: 800; color: var(--blue-600); line-height: 1; margin-bottom: 4px; }
-  .stat-lbl { font-size: 11px; color: var(--gray-400); font-weight: 500; line-height: 1.3; }
-  .cert-lbl { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
-  .cert-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .cert-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-100); }
-
-  .section { max-width: 1100px; margin: 0 auto; padding: 64px 2rem; }
-  .eyebrow { font-size: 12px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-  .sec-title { font-size: 2rem; font-weight: 800; color: var(--gray-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 40px; }
-  .divider { border: none; border-top: 1px solid var(--gray-200); max-width: 1100px; margin: 0 auto; }
-
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
-  .project-card { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); transition: all 0.25s; display: flex; flex-direction: column; }
-  .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--blue-100); }
-  .pc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
-  .pc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-  .pc-num { font-size: 11px; font-weight: 700; color: var(--gray-400); background: var(--gray-100); padding: 3px 8px; border-radius: 99px; }
-  .project-card h3 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; line-height: 1.3; }
-  .project-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.7; flex: 1; margin-bottom: 18px; }
-  .p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-  .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
-  .p-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--blue-600); text-decoration: none; padding: 8px 14px; border-radius: 8px; border: 1.5px solid var(--blue-200); background: var(--blue-50); transition: all 0.15s; margin-top: auto; width: fit-content; }
-  .p-link:hover { background: var(--blue-100); border-color: var(--blue-300); }
-
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-  .sg-card { background: var(--white); border-radius: 20px; padding: 24px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); }
-  .sg-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
-  .sg-title { font-size: 12px; font-weight: 700; color: var(--gray-900); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { font-size: 12px; font-weight: 500; padding: 5px 11px; border-radius: 99px; background: var(--gray-50); color: var(--gray-700); border: 1px solid var(--gray-200); }
-
-  .exp-list { display: flex; flex-direction: column; gap: 16px; }
-  .exp-card { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); display: grid; grid-template-columns: 180px 1fr; gap: 2rem; transition: box-shadow 0.2s; }
-  .exp-card:hover { box-shadow: var(--shadow-md); }
-  .exp-date { font-size: 12px; font-weight: 600; color: var(--blue-600); background: var(--blue-50); border: 1px solid var(--blue-100); padding: 4px 10px; border-radius: 99px; display: inline-block; margin-bottom: 8px; white-space: nowrap; }
-  .exp-company { font-size: 14px; font-weight: 700; color: var(--gray-800); }
-  .exp-title { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 12px; }
-  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  .exp-bullets li { font-size: 13.5px; color: var(--gray-500); line-height: 1.65; display: flex; gap: 10px; }
-  .exp-bullets li::before { content: '→'; color: var(--blue-400); flex-shrink: 0; font-weight: 700; }
-
-  .contact-wrap { background: var(--gray-900); padding: 80px 2rem; }
-  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .c-eyebrow { font-size: 12px; font-weight: 700; color: var(--blue-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-  .c-heading { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
-  .c-heading span { color: var(--blue-400); }
-  .c-sub { font-size: 15px; color: #94A3B8; line-height: 1.7; }
-  .c-cards { display: flex; flex-direction: column; gap: 12px; }
-  .c-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: all 0.2s; }
-  .c-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(59,130,246,0.5); transform: translateX(4px); }
-  .c-icon { width: 42px; height: 42px; background: rgba(59,130,246,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; border: 1px solid rgba(59,130,246,0.25); }
-  .c-lbl { font-size: 10px; font-weight: 700; color: var(--blue-400); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
-  .c-val { font-size: 13.5px; font-weight: 500; color: #CBD5E1; }
-
-  footer { background: var(--gray-900); border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; }
-  footer p { font-size: 12px; color: #475569; }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-  .hero-text > * { animation: fadeUp 0.55s ease both; }
-  .hero-text > *:nth-child(1) { animation-delay: 0.05s; }
-  .hero-text > *:nth-child(2) { animation-delay: 0.15s; }
-  .hero-text > *:nth-child(3) { animation-delay: 0.25s; }
-  .hero-text > *:nth-child(4) { animation-delay: 0.35s; }
-  .hero-card { animation: fadeUp 0.55s ease 0.2s both; }
-
-  @media (max-width: 768px) {
-    nav { padding: 0 1rem; }
-    .nav-links a:not(.nav-cta) { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 40px 1.25rem 48px; gap: 2rem; }
-    .section { padding: 48px 1.25rem; }
-    .exp-card { grid-template-columns: 1fr; gap: 1rem; }
-    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-wrap { padding: 56px 1.25rem; }
-    footer { flex-direction: column; gap: 6px; text-align: center; }
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Melvin Green — cloud and technical support engineer portfolio featuring AWS networking, serverless, database, Linux, and troubleshooting projects.">
+<title>Melvin Green | Cloud & Technical Support Engineer</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <nav>
-  <div class="nav-brand">
-    <div class="nav-avatar">MG</div>
-    <span class="nav-name">Melvin Green</span>
-  </div>
-  <div class="nav-links">
-    <a href="projects.html">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact" class="nav-cta">Contact Me</a>
-  </div>
+<div class="container nav-in">
+<a class="brand" href="index.html">
+<span class="mark">MG</span> Melvin Green</a>
+<div class="nav-links">
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a class="cta" href="#contact">Contact</a>
+</div>
+</div>
 </nav>
 
-<div class="hero">
-  <div class="hero-text">
-    <div class="hero-available">Open to opportunities</div>
-    <h1>Cloud Support<br>Engineer &amp; <span class="hi">AWS</span><br>Practitioner</h1>
-    <p class="hero-sub">5+ years in technical support, now building hands-on AWS cloud skills. Experienced with VPC, IAM, S3, EC2, and CloudWatch. CompTIA Network+ certified and actively growing in cloud infrastructure.</p>
-    <div class="hero-actions">
-      <a href="projects.html" class="btn btn-primary">View My Projects →</a>
-      <a href="mailto:Melvingreen1031@gmail.com" class="btn btn-ghost">Get In Touch</a>
-    </div>
-  </div>
+<main id="main">
 
-  <div class="hero-card">
-    <div class="hc-header">
-      <div class="hc-avatar">MG</div>
-      <div>
-        <div class="hc-name">Melvin Green</div>
-        <div class="hc-role">Cloud Support Engineer · Woodbridge, NJ</div>
-      </div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-lbl">Years technical support</div></div>
-      <div class="stat-box"><div class="stat-num">20</div><div class="stat-lbl">AWS projects completed</div></div>
-      <div class="stat-box"><div class="stat-num">N+</div><div class="stat-lbl">CompTIA certified</div></div>
-      <div class="stat-box"><div class="stat-num">AWS</div><div class="stat-lbl">Core services hands-on</div></div>
-    </div>
-    <div class="cert-lbl">Certifications</div>
-    <div class="cert-tags">
-      <span class="cert-tag">CompTIA Network+</span>
-      <span class="cert-tag">Google Analytics</span>
-      <span class="cert-tag">Google Search</span>
-      <span class="cert-tag">Facebook Blueprint</span>
-    </div>
-  </div>
+<header class="hero">
+<div class="container hero-grid">
+<div>
+<div class="status">
+<span class="dot">
+</span> Open to cloud & technical support opportunities</div>
+<h1>Cloud & Technical<br>
+<span>Support Engineer</span>
+</h1>
+<p class="lead">I build, troubleshoot, and document AWS cloud infrastructure, networking, serverless applications, databases, and Linux systems — backed by client-facing SaaS and API integration experience.</p>
+<div class="actions">
+<a class="btn primary" href="#projects">Explore projects ↓</a>
+<a class="btn" href="projects.html?p=p16">View flagship case study</a>
+<a class="btn" href="https://www.linkedin.com/in/mgreen7" target="_blank">LinkedIn ↗</a>
 </div>
+</div>
+<aside class="hero-card">
+<div class="mini">Technical profile</div>
+<div class="stack">
+<span class="pill">AWS</span>
+<span class="pill">Linux</span>
+<span class="pill">Networking</span>
+<span class="pill">REST APIs</span>
+<span class="pill">SaaS Integrations</span>
+</div>
+<div class="stat-grid">
+<div class="stat">
+<strong>20</strong>
+<span>Documented AWS projects</span>
+</div>
+<div class="stat">
+<strong>N+</strong>
+<span>CompTIA Network+ certified</span>
+</div>
+<div class="stat">
+<strong>4</strong>
+<span>Featured engineering case studies</span>
+</div>
+<div class="stat">
+<strong>AWS</strong>
+<span>VPC · EC2 · IAM · Lambda</span>
+</div>
+</div>
+</aside>
+</div>
+</header>
 
-<hr class="divider">
+<section class="section" id="featured">
+<div class="container">
+<div class="eyebrow">Featured engineering work</div>
+<h2>Projects that show how I troubleshoot</h2>
+<p class="section-intro">Selected projects highlighting networking, monitoring, serverless architecture, Linux administration, databases, and practical AWS problem solving.</p>
+<div class="featured-grid" id="featured-projects">
+</div>
+</div>
+</section>
 
 <section class="section" id="projects">
-  <div class="eyebrow">AWS Projects</div>
-  <div class="sec-title">Hands-on cloud labs</div>
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#EFF6FF;">☁️</div>
-        <span class="pc-num">01</span>
-      </div>
-      <h3>AWS Account Setup &amp; Security</h3>
-      <p>Set up a secure AWS account from scratch — configuring root user credentials, enabling MFA via authenticator app, setting up billing alerts with CloudWatch and SNS, and activating Free Tier safeguards to prevent unexpected charges.</p>
-      <div class="p-tags">
-        <span class="tag">IAM</span><span class="tag">CloudWatch</span><span class="tag">SNS</span><span class="tag">MFA</span><span class="tag">Root Security</span>
-      </div>
-      <a href="projects.html?p=p1" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🪣</div>
-        <span class="pc-num">02</span>
-      </div>
-      <h3>Host a Website on Amazon S3</h3>
-      <p>Deployed a static website to Amazon S3, configuring bucket policies, ACLs, and public access settings. Troubleshot and resolved a 403 Forbidden error by correctly managing object-level permissions alongside bucket-level settings.</p>
-      <div class="p-tags">
-        <span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">ACLs</span><span class="tag">Static Hosting</span>
-      </div>
-      <a href="projects.html?p=p2" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#EFF6FF;">🌐</div>
-        <span class="pc-num">03</span>
-      </div>
-      <h3>Build a Virtual Private Cloud (VPC)</h3>
-      <p>Built an Amazon VPC from scratch — defining CIDR blocks, creating public and private subnets, attaching an Internet Gateway, and configuring route tables. Also used AWS CloudShell and CLI to create resources programmatically.</p>
-      <div class="p-tags">
-        <span class="tag">VPC</span><span class="tag">Subnets</span><span class="tag">Internet Gateway</span><span class="tag">Route Tables</span><span class="tag">AWS CLI</span>
-      </div>
-      <a href="projects.html?p=p3" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FFF7ED;">🔒</div>
-        <span class="pc-num">04</span>
-      </div>
-      <h3>VPC Traffic Flow &amp; Security</h3>
-      <p>Configured Security Groups and Network ACLs to control inbound and outbound traffic. Implemented layered security at both resource and subnet levels, and deployed resources across multiple regions to explore EC2 Global View.</p>
-      <div class="p-tags">
-        <span class="tag">Security Groups</span><span class="tag">Network ACLs</span><span class="tag">Multi-Region</span><span class="tag">EC2 Global View</span>
-      </div>
-      <a href="projects.html?p=p4" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F5F3FF;">🛡️</div>
-        <span class="pc-num">05</span>
-      </div>
-      <h3>Cloud Security with AWS IAM</h3>
-      <p>Built a real-world IAM access control setup — creating users, user groups, and a multi-statement JSON policy restricting interns to development EC2 instances only. Verified using live testing and the IAM Policy Simulator. Configured account aliases for simpler sign-in URLs.</p>
-      <div class="p-tags">
-        <span class="tag">IAM</span><span class="tag">EC2</span><span class="tag">JSON Policies</span><span class="tag">User Groups</span><span class="tag">Policy Simulator</span><span class="tag">Resource Tagging</span>
-      </div>
-      <a href="projects.html?p=p5" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🔐</div>
-        <span class="pc-num">06</span>
-      </div>
-      <h3>Creating a Private Subnet</h3>
-      <p>Built a private subnet inside an Amazon VPC, configured a dedicated route table with no internet gateway route, and set up a custom Network ACL that denies all inbound and outbound traffic to fully isolate the subnet.</p>
-      <div class="p-tags">
-        <span class="tag">VPC</span><span class="tag">Private Subnet</span><span class="tag">Route Tables</span><span class="tag">Network ACLs</span>
-      </div>
-      <a href="projects.html?p=p6" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#EFF6FF;">🚀</div>
-        <span class="pc-num">07</span>
-      </div>
-      <h3>Launching VPC Resources</h3>
-      <p>Launched public and private EC2 instances inside a VPC, configured key pairs for secure SSH access, set up dedicated security groups for each server, and used the "VPC and more" option to rapidly deploy a full VPC infrastructure including subnets, route tables, and internet gateways.</p>
-      <div class="p-tags">
-        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">SSH</span><span class="tag">Key Pairs</span><span class="tag">Security Groups</span><span class="tag">NAT Gateway</span>
-      </div>
-      <a href="projects.html?p=p7" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🔗</div>
-        <span class="pc-num">08</span>
-      </div>
-      <h3>Testing VPC Connectivity</h3>
-      <p>Launched public and private EC2 instances, connected via EC2 Instance Connect, and tested connectivity using ping and curl. Troubleshot ICMP traffic issues by updating Network ACLs and security group rules to allow communication between servers.</p>
-      <div class="p-tags">
-        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">Ping</span><span class="tag">Curl</span><span class="tag">ICMP</span><span class="tag">Network ACLs</span>
-      </div>
-      <a href="projects.html?p=p8" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FFF7ED;">🔀</div>
-        <span class="pc-num">09</span>
-      </div>
-      <h3>VPC Peering</h3>
-      <p>Built a multi-VPC architecture by creating two VPCs with unique CIDR blocks, establishing a peering connection, updating route tables on both sides, and validating connectivity using ping. Troubleshot EC2 Instance Connect errors by assigning Elastic IP addresses and resolved ping failures by enabling ICMP traffic in security groups.</p>
-      <div class="p-tags">
-        <span class="tag">VPC Peering</span><span class="tag">Elastic IP</span><span class="tag">ICMP</span><span class="tag">Route Tables</span><span class="tag">EC2</span>
-      </div>
-      <a href="projects.html?p=p9" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#EFF6FF;">📊</div>
-        <span class="pc-num">10</span>
-      </div>
-      <h3>VPC Monitoring with Flow Logs</h3>
-      <p>Set up VPC Flow Logs to monitor network traffic across two peered VPCs, configured IAM policies and roles to allow log delivery to CloudWatch, troubleshot connectivity issues using ping, and analyzed traffic data using CloudWatch Logs Insights queries.</p>
-      <div class="p-tags">
-        <span class="tag">VPC Flow Logs</span><span class="tag">CloudWatch</span><span class="tag">IAM Roles</span><span class="tag">Logs Insights</span><span class="tag">VPC Peering</span>
-      </div>
-      <a href="projects.html?p=p10" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F5F3FF;">🔑</div>
-        <span class="pc-num">11</span>
-      </div>
-      <h3>Access S3 from a VPC</h3>
-      <p>Launched a VPC with a public subnet and EC2 instance, configured AWS CLI access keys to authenticate the instance against AWS, and used CLI commands to list, upload, and verify objects in an S3 bucket — demonstrating how compute resources inside a VPC securely interact with storage outside it.</p>
-      <div class="p-tags">
-        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">S3</span><span class="tag">AWS CLI</span><span class="tag">Access Keys</span><span class="tag">IAM Roles</span>
-      </div>
-      <a href="projects.html?p=p11" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FFF7ED;">🚪</div>
-        <span class="pc-num">12</span>
-      </div>
-      <h3>VPC Endpoints</h3>
-      <p>Created an S3 Gateway Endpoint to give an EC2 instance private access to an S3 bucket without routing through the internet gateway, then enforced that boundary with a bucket policy scoped to the endpoint's ID. Updated the route table to direct S3 traffic to the endpoint and validated enforcement by toggling the endpoint policy between Allow and Deny.</p>
-      <div class="p-tags">
-        <span class="tag">VPC Endpoints</span><span class="tag">Gateway Endpoint</span><span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">Endpoint Policies</span><span class="tag">Route Tables</span>
-      </div>
-      <a href="projects.html?p=p12" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🌍</div>
-        <span class="pc-num">13</span>
-      </div>
-      <h3>Website Delivery with CloudFront</h3>
-      <p>Deployed a static website to S3 and distributed it globally using Amazon CloudFront. Configured a CloudFront distribution with an S3 origin, set up Origin Access Control (OAC) to keep the bucket private while allowing CloudFront access, and compared load times and security between direct S3 hosting and CloudFront delivery.</p>
-      <div class="p-tags">
-        <span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">CDN</span><span class="tag">OAC</span><span class="tag">Distributions</span><span class="tag">Static Hosting</span>
-      </div>
-      <a href="projects.html?p=p13" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FEF9C3;">⚡</div>
-        <span class="pc-num">14</span>
-      </div>
-      <h3>APIs with Lambda + API Gateway</h3>
-      <p>Built the logic tier of a three-tier architecture by writing a Lambda function to retrieve user data from DynamoDB, then exposed it via a REST API in Amazon API Gateway. Configured a GET method with Lambda proxy integration, deployed to a Prod stage, and wrote and published OpenAPI documentation for the API.</p>
-      <div class="p-tags">
-        <span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">REST API</span><span class="tag">Serverless</span><span class="tag">DynamoDB</span><span class="tag">OpenAPI</span>
-      </div>
-      <a href="projects.html?p=p14" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🗄️</div>
-        <span class="pc-num">15</span>
-      </div>
-      <h3>Fetch Data with AWS Lambda</h3>
-      <p>Set up a DynamoDB table as the data tier of a three-tier architecture, then wrote a Lambda function using the AWS SDK to query it by userId. Debugged an IAM Access Denied error by reading the error message to identify the missing permission, chose AmazonDynamoDBReadOnlyAccess over broader policies, and then hardened security further by writing a custom inline policy scoped to a single table.</p>
-      <div class="p-tags">
-        <span class="tag">DynamoDB</span><span class="tag">Lambda</span><span class="tag">IAM</span><span class="tag">Inline Policies</span><span class="tag">Execution Roles</span><span class="tag">NoSQL</span>
-      </div>
-      <a href="projects.html?p=p15" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#EFF6FF;">🏗️</div>
-        <span class="pc-num">16</span>
-      </div>
-      <h3>Build a Three-Tier Web App</h3>
-      <p>Assembled all three tiers of a production-style architecture from scratch: CloudFront + S3 for the presentation tier, Lambda + API Gateway for the logic tier, and DynamoDB for the data tier. Debugged real-world issues including a script.js placeholder error and a CORS error caused by Lambda proxy integration, resolving it by scoping Access-Control-Allow-Origin to the CloudFront domain rather than using a wildcard.</p>
-      <div class="p-tags">
-        <span class="tag">Three-Tier Architecture</span><span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">DynamoDB</span><span class="tag">CORS</span>
-      </div>
-      <a href="projects.html?p=p16" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0FDF4;">🗃️</div>
-        <span class="pc-num">17</span>
-      </div>
-      <h3>Connect a Web App to Amazon Aurora</h3>
-      <p>Created an Amazon Aurora MySQL cluster and connected it to an EC2 instance acting as a web server. Learned how Aurora clusters use a primary instance and read replicas to ensure high availability, and how AWS automatically handles VPC, DB subnet group, and security group configuration when linking EC2 to RDS.</p>
-      <div class="p-tags">
-        <span class="tag">Aurora</span><span class="tag">RDS</span><span class="tag">EC2</span><span class="tag">MySQL</span><span class="tag">Relational Databases</span><span class="tag">VPC</span>
-      </div>
-      <a href="projects.html?p=p17" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FDF4FF;">🔌</div>
-        <span class="pc-num">18</span>
-      </div>
-      <h3>Aurora Web App with LAMP Stack</h3>
-      <p>Built a dynamic database-driven web app on EC2 using a LAMP-style stack (Apache, PHP, php-mysqli, MariaDB), connected it to an Amazon Aurora MySQL cluster, and verified end-to-end data flow by submitting form data and querying it back via the MySQL CLI. Navigated real Linux CLI challenges including SSH key permissions with chmod 400, file ownership with chown, and editing config files in nano.</p>
-      <div class="p-tags">
-        <span class="tag">Aurora</span><span class="tag">EC2</span><span class="tag">LAMP Stack</span><span class="tag">MySQL CLI</span><span class="tag">PHP</span><span class="tag">Apache</span><span class="tag">Linux</span>
-      </div>
-      <a href="projects.html?p=p18" class="p-link">View Project →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#FFFBEB;">📦</div>
-        <span class="pc-num">19</span>
-      </div>
-      <h3>Load Data into a DynamoDB Table</h3>
-      <p>Created multiple DynamoDB tables using the AWS CLI in CloudShell, then bulk-loaded JSON data using batch-write-item. Explored DynamoDB's schema-less flexibility by observing items with different attribute sets in the same table, learned the difference between RCUs and WCUs, and compared DynamoDB's speed and flexibility advantages over relational databases.</p>
-      <div class="p-tags">
-        <span class="tag">DynamoDB</span><span class="tag">AWS CLI</span><span class="tag">CloudShell</span><span class="tag">NoSQL</span><span class="tag">batch-write-item</span><span class="tag">RCU/WCU</span>
-      </div>
-      <a href="projects.html?p=p19" class="p-link">View Project →</a>
-    </div>
-
-
-    <div class="project-card">
-      <div class="pc-top">
-        <div class="pc-icon" style="background:#F0F9FF;">🔍</div>
-        <span class="pc-num">20</span>
-      </div>
-      <h3>Query Data with DynamoDB</h3>
-      <p>Ran advanced queries and scans on DynamoDB tables using both the AWS Console and CLI, using partition keys, sort keys, projection expressions, consistent reads, and return-consumed-capacity flags. Discovered the limits of querying non-key attributes and learned when a Global Secondary Index is needed. Executed a multi-table transaction to atomically add a comment and increment a forum's comment count in a single operation.</p>
-      <div class="p-tags">
-        <span class="tag">DynamoDB</span><span class="tag">Queries & Scans</span><span class="tag">Transactions</span><span class="tag">AWS CLI</span><span class="tag">Partition Keys</span><span class="tag">Sort Keys</span>
-      </div>
-      <a href="projects.html?p=p20" class="p-link">View Project →</a>
-    </div>
-
-  </div>
+<div class="container">
+<div class="eyebrow">Project explorer</div>
+<h2>Browse by technical area</h2>
+<p class="section-intro">The portfolio is organized by skill area so recruiters and engineers can quickly inspect the work most relevant to a role.</p>
+<div class="filters" role="group" aria-label="Filter projects">
+<button class="filter active" data-filter="all">All</button>
+<button class="filter" data-filter="networking">Networking</button>
+<button class="filter" data-filter="serverless">Serverless & APIs</button>
+<button class="filter" data-filter="databases">Databases</button>
+<button class="filter" data-filter="linux">Linux</button>
+<button class="filter" data-filter="security">Security</button>
+<button class="filter" data-filter="monitoring">Monitoring</button>
+<button class="filter" data-filter="cloud">Foundations</button>
+</div>
+<div class="project-grid" id="project-grid">
+</div>
+</div>
 </section>
-
-<hr class="divider">
 
 <section class="section" id="skills">
-  <div class="eyebrow">Technical Skills</div>
-  <div class="sec-title">Tools &amp; technologies</div>
-  <div class="skills-grid">
-
-    <div class="sg-card">
-      <div class="sg-icon" style="background:#EFF6FF;">☁️</div>
-      <div class="sg-title">AWS Services</div>
-      <div class="chips">
-        <span class="chip">IAM</span><span class="chip">VPC</span><span class="chip">S3</span><span class="chip">EC2</span><span class="chip">CloudWatch</span><span class="chip">CloudShell</span><span class="chip">AWS CLI</span><span class="chip">SNS</span>
-      </div>
-    </div>
-
-    <div class="sg-card">
-      <div class="sg-icon" style="background:#F0FDF4;">🌐</div>
-      <div class="sg-title">Networking</div>
-      <div class="chips">
-        <span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">Subnetting</span><span class="chip">CIDR</span><span class="chip">CompTIA N+</span><span class="chip">HTTP/HTTPS</span><span class="chip">VPN</span>
-      </div>
-    </div>
-
-    <div class="sg-card">
-      <div class="sg-icon" style="background:#FFF7ED;">🔐</div>
-      <div class="sg-title">Security &amp; Access</div>
-      <div class="chips">
-        <span class="chip">JSON Policies</span><span class="chip">MFA</span><span class="chip">Security Groups</span><span class="chip">Network ACLs</span><span class="chip">Bucket Policies</span><span class="chip">IAM Simulator</span><span class="chip">Least Privilege</span>
-      </div>
-    </div>
-
-    <div class="sg-card">
-      <div class="sg-icon" style="background:#F5F3FF;">🖥️</div>
-      <div class="sg-title">Support &amp; Ops</div>
-      <div class="chips">
-        <span class="chip">SaaS Support</span><span class="chip">API Troubleshooting</span><span class="chip">Ticketing</span><span class="chip">Escalation</span><span class="chip">Windows OS</span><span class="chip">Incident Response</span>
-      </div>
-    </div>
-
-  </div>
+<div class="container">
+<div class="eyebrow">Technical toolkit</div>
+<h2>Skills I can discuss and demonstrate</h2>
+<div class="skills">
+<div class="skill-card">
+<h3>AWS & Cloud</h3>
+<div class="chip-row">
+<span class="chip">EC2</span>
+<span class="chip">VPC</span>
+<span class="chip">S3</span>
+<span class="chip">IAM</span>
+<span class="chip">Lambda</span>
+<span class="chip">API Gateway</span>
+<span class="chip">CloudFront</span>
+<span class="chip">CloudWatch</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Networking</h3>
+<div class="chip-row">
+<span class="chip">TCP/IP</span>
+<span class="chip">DNS</span>
+<span class="chip">CIDR</span>
+<span class="chip">Subnets</span>
+<span class="chip">Route Tables</span>
+<span class="chip">Security Groups</span>
+<span class="chip">NACLs</span>
+<span class="chip">VPC Peering</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Systems & Data</h3>
+<div class="chip-row">
+<span class="chip">Linux</span>
+<span class="chip">SSH</span>
+<span class="chip">AWS CLI</span>
+<span class="chip">DynamoDB</span>
+<span class="chip">Aurora MySQL</span>
+<span class="chip">Apache</span>
+<span class="chip">PHP</span>
+<span class="chip">JSON</span>
+</div>
+</div>
+<div class="skill-card">
+<h3>Support & Integrations</h3>
+<div class="chip-row">
+<span class="chip">REST APIs</span>
+<span class="chip">Troubleshooting</span>
+<span class="chip">SaaS</span>
+<span class="chip">HubSpot</span>
+<span class="chip">Shopify</span>
+<span class="chip">Zapier</span>
+<span class="chip">WordPress</span>
+<span class="chip">Technical Documentation</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<hr class="divider">
 
 <section class="section" id="experience">
-  <div class="eyebrow">Work History</div>
-  <div class="sec-title">Experience</div>
-  <div class="exp-list">
-
-    <div class="exp-card">
-      <div>
-        <div class="exp-date">Feb 2025 – Present</div>
-        <div class="exp-company">Garden State Home</div>
-      </div>
-      <div>
-        <div class="exp-title">Help Desk Analyst</div>
-        <ul class="exp-bullets">
-          <li>Provided Tier 1 support for hardware, software, authentication, and connectivity issues — directly aligned with cloud support triage workflows.</li>
-          <li>Diagnosed and resolved Windows OS, application, and access issues; escalated complex cases following structured SLA processes.</li>
-          <li>Managed user onboarding, account provisioning, and system configuration — skills applicable to cloud IAM.</li>
-          <li>Delivered empathetic technical support to non-technical users during fast-paced support queues.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div>
-        <div class="exp-date">Apr 2022 – Feb 2025</div>
-        <div class="exp-company">GrowRev</div>
-      </div>
-      <div>
-        <div class="exp-title">Technical Support Analyst – Cloud &amp; Marketing Systems</div>
-        <ul class="exp-bullets">
-          <li>Supported clients on SaaS analytics, campaign tracking, and reporting platforms — gaining hands-on exposure to cloud-hosted environments.</li>
-          <li>Diagnosed platform configuration errors, data pipeline failures, and API integration issues affecting client uptime.</li>
-          <li>Partnered with engineering teams to identify root causes of recurring system errors, improving incident response documentation.</li>
-          <li>Maintained a knowledge base of resolutions, reducing average resolution time for repeat issues.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div>
-        <div class="exp-date">Jun 2021 – Mar 2022</div>
-        <div class="exp-company">PCG Digital</div>
-      </div>
-      <div>
-        <div class="exp-title">Application Support &amp; SEM Specialist</div>
-        <ul class="exp-bullets">
-          <li>Resolved client-side technical issues including website errors, tracking code failures, and access policy violations.</li>
-          <li>Monitored system performance dashboards and implemented corrective actions to restore reliability.</li>
-          <li>Collaborated with development teams to validate fixes in staging before production deployment.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-card">
-      <div>
-        <div class="exp-date">Apr 2019 – Jun 2021</div>
-        <div class="exp-company">Electronics Expo</div>
-      </div>
-      <div>
-        <div class="exp-title">Web Systems Technician</div>
-        <ul class="exp-bullets">
-          <li>Installed, configured, and maintained website systems and third-party software integrations.</li>
-          <li>Coordinated with vendors to resolve system outages; gained experience in multi-party incident management and escalation.</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
+<div class="container">
+<div class="eyebrow">Experience</div>
+<h2>Support background with a cloud trajectory</h2>
+<div class="exp-list">
+<article class="exp-card">
+<div class="exp-meta">
+<span class="date">Feb 2025 — Present</span>
+<strong>Garden State Home</strong>
+</div>
+<div class="exp-body">
+<h3>Client Support Specialist</h3>
+<ul>
+<li>Maintain client records and documentation in HMIS and Google Workspace, supporting onboarding, document retrieval, and operational workflows.</li>
+<li>Coordinate with external organizations to resolve documentation and service-related issues supporting housing assistance.</li>
+<li>Maintain Wix website content and support daily operations using Excel, Gmail, Google Calendar, and Microsoft productivity tools.</li>
+</ul>
+</div>
+</article>
+<article class="exp-card">
+<div class="exp-meta">
+<span class="date">Apr 2022 — Feb 2025</span>
+<strong>GrowRev</strong>
+</div>
+<div class="exp-body">
+<h3>Technical Support Analyst — Marketing Systems</h3>
+<ul>
+<li>Configured and troubleshot SaaS, CRM, e-commerce, analytics, and marketing integrations across HubSpot, Shopify, Zapier, ClickFunnels, Hyros, and Triple Whale.</li>
+<li>Investigated API, data-flow, tracking, attribution, and configuration issues across interconnected third-party systems.</li>
+<li>Built WordPress/ClickFunnels web experiences, lead-delivery workflows, email automations, and client-facing reporting.</li>
+</ul>
+</div>
+</article>
+<article class="exp-card">
+<div class="exp-meta">
+<span class="date">Jun 2021 — Mar 2022</span>
+<strong>PCG Digital</strong>
+</div>
+<div class="exp-body">
+<h3>Application Support & Search Engine Marketing Specialist</h3>
+<ul>
+<li>Resolved website, tracking, access, and platform configuration issues and collaborated with development teams to validate technical fixes.</li>
+</ul>
+</div>
+</article>
+<article class="exp-card">
+<div class="exp-meta">
+<span class="date">Apr 2019 — Jun 2021</span>
+<strong>Electronics Expo</strong>
+</div>
+<div class="exp-body">
+<h3>Web Systems Technician</h3>
+<ul>
+<li>Installed, configured, and maintained website systems and third-party integrations while troubleshooting front-end and back-end performance issues.</li>
+</ul>
+</div>
+</article>
+</div>
+</div>
 </section>
 
-<div class="contact-wrap" id="contact">
-  <div class="contact-inner">
-    <div>
-      <div class="c-eyebrow">Get In Touch</div>
-      <h2 class="c-heading">Let's work<br><span>together</span></h2>
-      <p class="c-sub">Open to cloud support engineer roles. Based in Woodbridge, NJ. Available for full-time opportunities — let's connect and chat about what you're building.</p>
-    </div>
-    <div class="c-cards">
-      <a href="mailto:Melvingreen1031@gmail.com" class="c-card">
-        <div class="c-icon">✉️</div>
-        <div><div class="c-lbl">Email</div><div class="c-val">Melvingreen1031@gmail.com</div></div>
-      </a>
-      <a href="https://linkedin.com/in/mgreen7" target="_blank" class="c-card">
-        <div class="c-icon">💼</div>
-        <div><div class="c-lbl">LinkedIn</div><div class="c-val">linkedin.com/in/mgreen7</div></div>
-      </a>
-      <a href="https://github.com/mgreen732" target="_blank" class="c-card">
-        <div class="c-icon">💻</div>
-        <div><div class="c-lbl">GitHub</div><div class="c-val">github.com/mgreen732</div></div>
-      </a>
-      <a href="tel:7328102885" class="c-card">
-        <div class="c-icon">📞</div>
-        <div><div class="c-lbl">Phone</div><div class="c-val">(732) 810-2885</div></div>
-      </a>
-    </div>
-  </div>
+<section class="section" id="certifications">
+<div class="container">
+<div class="eyebrow">Credentials</div>
+<h2>Certifications</h2>
+<div class="cert-grid">
+<div class="cert-card">
+<strong>CompTIA Network+</strong>
+<span>Certified · 2026</span>
 </div>
+<div class="cert-card">
+<strong>Google Analytics</strong>
+<span>Professional certification</span>
+</div>
+<div class="cert-card">
+<strong>Facebook Blueprint</strong>
+<span>Professional certification</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container contact-grid">
+<div>
+<div class="eyebrow">Contact</div>
+<h2>Building toward cloud operations & engineering</h2>
+<p>I’m interested in Cloud Support Engineer, Technical Support Engineer, Cloud Operations, Infrastructure Support, and Associate Cloud Engineer opportunities.</p>
+</div>
+<div class="contact-links">
+<a class="contact-link" href="mailto:Melvingreen1031@gmail.com">
+<span>Email</span>
+<span>Melvingreen1031@gmail.com ↗</span>
+</a>
+<a class="contact-link" href="https://www.linkedin.com/in/mgreen7" target="_blank">
+<span>LinkedIn</span>
+<span>linkedin.com/in/mgreen7 ↗</span>
+</a>
+<a class="contact-link" href="https://github.com/mgreen732" target="_blank">
+<span>GitHub</span>
+<span>github.com/mgreen732 ↗</span>
+</a>
+</div>
+</div>
+</section>
+
+</main>
 
 <footer>
-  <p>© 2025 Melvin Green — Cloud Support Engineer</p>
-  <p>Built with GitHub Pages · Woodbridge, NJ</p>
+<div class="container">© 2026 Melvin Green · Built with GitHub Pages</div>
 </footer>
 
+<script src="js/projects-data.js">
+</script>
+
+<script src="js/app.js">
+</script>
+
 </body>
+
 </html>
