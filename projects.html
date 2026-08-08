@@ -201,7 +201,7 @@
   <div class="page-header-left">
     <div class="eyebrow">AWS Projects</div>
     <h1 class="page-title">Hands-on cloud labs</h1>
-    <p class="page-sub">Seventeen real AWS projects built from scratch. Click any project to read the full write-up with embedded documentation.</p>
+    <p class="page-sub">Twenty real AWS projects built from scratch. Click any project to read the full write-up with embedded documentation.</p>
   </div>
   <a href="index.html" class="back-btn">← Back to Portfolio</a>
 </div>
@@ -362,6 +362,33 @@
       <div class="proj-btn-text">
         <div class="proj-btn-num">17</div>
         <div class="proj-btn-title">Connect a Web App to Amazon Aurora</div>
+      </div>
+      <span class="proj-btn-arrow">›</span>
+    </button>
+
+    <button class="proj-btn" onclick="showProject('p18', this)">
+      <div class="proj-btn-icon" style="background:#FDF4FF;">🔌</div>
+      <div class="proj-btn-text">
+        <div class="proj-btn-num">18</div>
+        <div class="proj-btn-title">Aurora Web App with LAMP Stack</div>
+      </div>
+      <span class="proj-btn-arrow">›</span>
+    </button>
+
+    <button class="proj-btn" onclick="showProject('p19', this)">
+      <div class="proj-btn-icon" style="background:#FFFBEB;">📦</div>
+      <div class="proj-btn-text">
+        <div class="proj-btn-num">19</div>
+        <div class="proj-btn-title">Load Data into a DynamoDB Table</div>
+      </div>
+      <span class="proj-btn-arrow">›</span>
+    </button>
+
+    <button class="proj-btn" onclick="showProject('p20', this)">
+      <div class="proj-btn-icon" style="background:#F0F9FF;">🔍</div>
+      <div class="proj-btn-text">
+        <div class="proj-btn-num">20</div>
+        <div class="proj-btn-title">Query Data with DynamoDB</div>
       </div>
       <span class="proj-btn-arrow">›</span>
     </button>
@@ -864,6 +891,96 @@
         </div>
         <div class="pdf-embed-wrap">
           <iframe src="projects/connect_a_web_app_to_amazon_aurora.pdf" title="Connect a Web App to Amazon Aurora PDF"></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PROJECT 18 -->
+    <div class="project-view" id="p18">
+      <div class="pv-header">
+        <div class="pv-top">
+          <div class="pv-icon" style="background:#FDF4FF;">🔌</div>
+          <div class="pv-meta">
+            <div class="pv-num">Project 18</div>
+            <div class="pv-title">Aurora Web App with LAMP Stack</div>
+          </div>
+        </div>
+        <p class="pv-desc">Built a dynamic database-driven web app on EC2 using a LAMP-style stack (Apache, PHP, php-mysqli, MariaDB), connected it to an Amazon Aurora MySQL cluster, and verified end-to-end data flow by submitting form data and querying it back via the MySQL CLI. Navigated real Linux CLI challenges including SSH key permissions with chmod 400, file ownership with chown, and editing config files in nano.</p>
+        <div class="pv-tags">
+          <span class="tag">Aurora</span><span class="tag">EC2</span><span class="tag">LAMP Stack</span><span class="tag">MySQL CLI</span><span class="tag">PHP</span><span class="tag">Apache</span><span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="pv-pdf-wrap">
+        <div class="pv-pdf-toolbar">
+          <div class="pv-pdf-filename"><span>📄</span> connect_a_web_app_to_amazon_aurora_project2.pdf</div>
+          <div class="pv-pdf-actions">
+            <a class="pdf-action-btn btn-open" href="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" target="_blank">Open in Tab ↗</a>
+            <a class="pdf-action-btn btn-download" href="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="pdf-embed-wrap">
+          <iframe src="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" title="Aurora Web App with LAMP Stack PDF"></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PROJECT 19 -->
+    <div class="project-view" id="p19">
+      <div class="pv-header">
+        <div class="pv-top">
+          <div class="pv-icon" style="background:#FFFBEB;">📦</div>
+          <div class="pv-meta">
+            <div class="pv-num">Project 19</div>
+            <div class="pv-title">Load Data into a DynamoDB Table</div>
+          </div>
+        </div>
+        <p class="pv-desc">Created multiple DynamoDB tables using the AWS CLI in CloudShell, then bulk-loaded JSON data using batch-write-item. Explored DynamoDB's schema-less flexibility by observing items with different attribute sets in the same table, learned the difference between RCUs and WCUs, and compared DynamoDB's speed and flexibility advantages over relational databases.</p>
+        <div class="pv-tags">
+          <span class="tag">DynamoDB</span><span class="tag">AWS CLI</span><span class="tag">CloudShell</span><span class="tag">NoSQL</span><span class="tag">batch-write-item</span><span class="tag">RCU/WCU</span>
+        </div>
+      </div>
+      <div class="pv-pdf-wrap">
+        <div class="pv-pdf-toolbar">
+          <div class="pv-pdf-filename"><span>📄</span> data_into_a_dynamodb_table_.pdf</div>
+          <div class="pv-pdf-actions">
+            <a class="pdf-action-btn btn-open" href="projects/data_into_a_dynamodb_table_.pdf" target="_blank">Open in Tab ↗</a>
+            <a class="pdf-action-btn btn-download" href="projects/data_into_a_dynamodb_table_.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="pdf-embed-wrap">
+          <iframe src="projects/data_into_a_dynamodb_table_.pdf" title="Load Data into a DynamoDB Table PDF"></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PROJECT 20 -->
+    <div class="project-view" id="p20">
+      <div class="pv-header">
+        <div class="pv-top">
+          <div class="pv-icon" style="background:#F0F9FF;">🔍</div>
+          <div class="pv-meta">
+            <div class="pv-num">Project 20</div>
+            <div class="pv-title">Query Data with DynamoDB</div>
+          </div>
+        </div>
+        <p class="pv-desc">Ran advanced queries and scans on DynamoDB tables using both the AWS Console and CLI, using partition keys, sort keys, projection expressions, consistent reads, and return-consumed-capacity flags. Discovered the limits of querying non-key attributes and learned when a Global Secondary Index is needed. Executed a multi-table transaction to atomically add a comment and increment a forum's comment count in a single operation.</p>
+        <div class="pv-tags">
+          <span class="tag">DynamoDB</span><span class="tag">Queries & Scans</span><span class="tag">Transactions</span><span class="tag">AWS CLI</span><span class="tag">Partition Keys</span><span class="tag">Sort Keys</span>
+        </div>
+      </div>
+      <div class="pv-pdf-wrap">
+        <div class="pv-pdf-toolbar">
+          <div class="pv-pdf-filename"><span>📄</span> query_data_with_dynamodb.pdf</div>
+          <div class="pv-pdf-actions">
+            <a class="pdf-action-btn btn-open" href="projects/query_data_with_dynamodb.pdf" target="_blank">Open in Tab ↗</a>
+            <a class="pdf-action-btn btn-download" href="projects/query_data_with_dynamodb.pdf" download>⬇ Download</a>
+          </div>
+        </div>
+        <div class="pdf-embed-wrap">
+          <iframe src="projects/query_data_with_dynamodb.pdf" title="Query Data with DynamoDB PDF"></iframe>
         </div>
       </div>
     </div>
