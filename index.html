@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Melvin Green | Cloud Support Engineer</title>
+<title>Melvin Green — Cloud Support Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -34,7 +34,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--gray-50); color: var(--gray-800); font-size: 16px; line-height: 1.6; }
 
-  /* ── NAV (identical to index) ── */
   nav {
     background: rgba(255,255,255,0.9);
     backdrop-filter: blur(12px);
@@ -43,945 +42,585 @@
     padding: 0 2rem; height: 64px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; }
   .nav-avatar { width: 36px; height: 36px; background: var(--blue-600); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; }
   .nav-name { font-size: 15px; font-weight: 700; color: var(--gray-900); }
   .nav-links { display: flex; align-items: center; gap: 4px; }
   .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-500); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
   .nav-links a:hover { color: var(--gray-900); background: var(--gray-100); }
-  .nav-links a.active { color: var(--blue-600); background: var(--blue-50); }
   .nav-cta { background: var(--blue-600) !important; color: #fff !important; font-weight: 600 !important; }
   .nav-cta:hover { background: var(--blue-700) !important; }
 
-  /* ── PAGE HEADER ── */
-  .page-header {
-    max-width: 1100px; margin: 0 auto; padding: 56px 2rem 48px;
-    display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
-  }
-  .page-header-left {}
+  .hero { max-width: 1100px; margin: 0 auto; padding: 80px 2rem 64px; display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center; }
+  .hero-available { display: inline-flex; align-items: center; gap: 8px; background: #ECFDF5; color: #065F46; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px; margin-bottom: 20px; border: 1px solid #A7F3D0; }
+  .hero-available::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  .hero h1 { font-size: clamp(2.1rem, 4.5vw, 3.1rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; color: var(--gray-900); margin-bottom: 20px; }
+  .hero h1 .hi { color: var(--blue-600); }
+  .hero-sub { font-size: 1.02rem; color: var(--gray-500); line-height: 1.75; margin-bottom: 32px; max-width: 500px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 12px; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; font-family: inherit; }
+  .btn-primary { background: var(--blue-600); color: #fff; box-shadow: 0 1px 3px rgba(37,99,235,0.3), 0 4px 12px rgba(37,99,235,0.2); }
+  .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 2px 6px rgba(37,99,235,0.4), 0 8px 20px rgba(37,99,235,0.25); }
+  .btn-ghost { background: var(--white); color: var(--gray-700); border: 1.5px solid var(--gray-200); box-shadow: var(--shadow-sm); }
+  .btn-ghost:hover { border-color: var(--gray-300); transform: translateY(-1px); }
+
+  .hero-card { background: var(--white); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-100); }
+  .hc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-100); }
+  .hc-avatar { width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue-500), var(--blue-700)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .hc-name { font-size: 16px; font-weight: 700; color: var(--gray-900); }
+  .hc-role { font-size: 12px; color: var(--gray-400); font-weight: 500; margin-top: 2px; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .stat-box { background: var(--gray-50); border-radius: 12px; padding: 14px; border: 1px solid var(--gray-100); }
+  .stat-num { font-size: 22px; font-weight: 800; color: var(--blue-600); line-height: 1; margin-bottom: 4px; }
+  .stat-lbl { font-size: 11px; color: var(--gray-400); font-weight: 500; line-height: 1.3; }
+  .cert-lbl { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .cert-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cert-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-100); }
+
+  .section { max-width: 1100px; margin: 0 auto; padding: 64px 2rem; }
   .eyebrow { font-size: 12px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-  .page-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--gray-900); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 12px; }
-  .page-sub { font-size: 15px; color: var(--gray-500); max-width: 520px; line-height: 1.7; }
-  .back-btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--gray-600); text-decoration: none; padding: 9px 18px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); box-shadow: var(--shadow-sm); transition: all 0.15s; white-space: nowrap; }
-  .back-btn:hover { border-color: var(--gray-300); transform: translateY(-1px); }
+  .sec-title { font-size: 2rem; font-weight: 800; color: var(--gray-900); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 40px; }
+  .divider { border: none; border-top: 1px solid var(--gray-200); max-width: 1100px; margin: 0 auto; }
 
-  /* ── PROJECT SIDEBAR + VIEWER LAYOUT ── */
-  .projects-layout {
-    max-width: 1100px; margin: 0 auto; padding: 0 2rem 80px;
-    display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start;
-  }
-
-  /* ── SIDEBAR ── */
-  .sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 10px; }
-  .sidebar-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; padding: 0 4px; margin-bottom: 4px; }
-
-  .proj-btn {
-    display: flex; align-items: center; gap: 12px;
-    background: var(--white); border: 1.5px solid var(--gray-200);
-    border-radius: 14px; padding: 14px 16px; cursor: pointer;
-    transition: all 0.2s; text-align: left; font-family: inherit;
-    box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
-  }
-  .proj-btn::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-    background: var(--blue-600); border-radius: 0 2px 2px 0;
-    transform: scaleX(0); transform-origin: left; transition: transform 0.2s;
-  }
-  .proj-btn:hover { border-color: var(--blue-200); box-shadow: var(--shadow-md); transform: translateX(2px); }
-  .proj-btn:hover::before { transform: scaleX(1); }
-  .proj-btn.active { border-color: var(--blue-400); background: var(--blue-50); box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
-  .proj-btn.active::before { transform: scaleX(1); }
-
-  .proj-btn-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .proj-btn-text { flex: 1; min-width: 0; }
-  .proj-btn-num { font-size: 10px; font-weight: 700; color: var(--gray-400); margin-bottom: 1px; }
-  .proj-btn-title { font-size: 13px; font-weight: 700; color: var(--gray-800); line-height: 1.3; }
-  .proj-btn.active .proj-btn-title { color: var(--blue-700); }
-  .proj-btn-arrow { font-size: 12px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
-  .proj-btn.active .proj-btn-arrow { color: var(--blue-500); transform: translateX(2px); }
-
-  /* ── MAIN VIEWER PANEL ── */
-  .viewer-panel {
-    background: var(--white); border-radius: 24px;
-    border: 1px solid var(--gray-100); box-shadow: var(--shadow-lg);
-    overflow: hidden; min-height: 700px;
-    display: flex; flex-direction: column;
-  }
-
-  /* Project detail views — all hidden by default */
-  .project-view { display: none; flex-direction: column; flex: 1; animation: fadeIn 0.3s ease; }
-  .project-view.visible { display: flex; }
-  @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
-
-  .pv-header { padding: 28px 32px 24px; border-bottom: 1px solid var(--gray-100); }
-  .pv-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-  .pv-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-  .pv-meta {}
-  .pv-num { font-size: 11px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
-  .pv-title { font-size: 1.4rem; font-weight: 800; color: var(--gray-900); letter-spacing: -0.02em; line-height: 1.2; }
-  .pv-desc { font-size: 14px; color: var(--gray-500); line-height: 1.75; margin-bottom: 16px; max-width: 680px; }
-  .pv-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
+  .project-card { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); transition: all 0.25s; display: flex; flex-direction: column; }
+  .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--blue-100); }
+  .pc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+  .pc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .pc-num { font-size: 11px; font-weight: 700; color: var(--gray-400); background: var(--gray-100); padding: 3px 8px; border-radius: 99px; }
+  .project-card h3 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 10px; line-height: 1.3; }
+  .project-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.7; flex: 1; margin-bottom: 18px; }
+  .p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
   .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--gray-100); color: var(--gray-600); border: 1px solid var(--gray-200); }
+  .p-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--blue-600); text-decoration: none; padding: 8px 14px; border-radius: 8px; border: 1.5px solid var(--blue-200); background: var(--blue-50); transition: all 0.15s; margin-top: auto; width: fit-content; }
+  .p-link:hover { background: var(--blue-100); border-color: var(--blue-300); }
 
-  /* PDF viewer */
-  .pv-pdf-wrap {
-    flex: 1; display: flex; flex-direction: column;
-    background: var(--gray-100); position: relative;
-  }
-  .pv-pdf-toolbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 20px; background: var(--white); border-bottom: 1px solid var(--gray-200);
-    gap: 12px; flex-wrap: wrap;
-  }
-  .pv-pdf-filename { font-size: 12px; font-weight: 600; color: var(--gray-500); display: flex; align-items: center; gap: 6px; }
-  .pv-pdf-filename span { font-size: 16px; }
-  .pv-pdf-actions { display: flex; gap: 8px; }
-  .pdf-action-btn {
-    display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
-    padding: 6px 14px; border-radius: 8px; text-decoration: none; transition: all 0.15s;
-    font-family: inherit; cursor: pointer; border: none;
-  }
-  .btn-download { background: var(--blue-600); color: #fff; }
-  .btn-download:hover { background: var(--blue-700); }
-  .btn-open { background: var(--gray-100); color: var(--gray-700); border: 1.5px solid var(--gray-200); }
-  .btn-open:hover { background: var(--gray-200); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .sg-card { background: var(--white); border-radius: 20px; padding: 24px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); }
+  .sg-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
+  .sg-title { font-size: 12px; font-weight: 700; color: var(--gray-900); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 12px; font-weight: 500; padding: 5px 11px; border-radius: 99px; background: var(--gray-50); color: var(--gray-700); border: 1px solid var(--gray-200); }
 
-  .pdf-embed-wrap { flex: 1; position: relative; min-height: 560px; }
-  .pdf-embed-wrap iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    border: none; display: block;
-  }
+  .exp-list { display: flex; flex-direction: column; gap: 16px; }
+  .exp-card { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--gray-100); box-shadow: var(--shadow-sm); display: grid; grid-template-columns: 180px 1fr; gap: 2rem; transition: box-shadow 0.2s; }
+  .exp-card:hover { box-shadow: var(--shadow-md); }
+  .exp-date { font-size: 12px; font-weight: 600; color: var(--blue-600); background: var(--blue-50); border: 1px solid var(--blue-100); padding: 4px 10px; border-radius: 99px; display: inline-block; margin-bottom: 8px; white-space: nowrap; }
+  .exp-company { font-size: 14px; font-weight: 700; color: var(--gray-800); }
+  .exp-title { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 12px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .exp-bullets li { font-size: 13.5px; color: var(--gray-500); line-height: 1.65; display: flex; gap: 10px; }
+  .exp-bullets li::before { content: '→'; color: var(--blue-400); flex-shrink: 0; font-weight: 700; }
 
-  /* Fallback for browsers that block embedded PDFs */
-  .pdf-fallback {
-    display: none; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 60px 40px; gap: 16px; height: 100%;
-  }
-  .pdf-fallback-icon { font-size: 48px; margin-bottom: 8px; }
-  .pdf-fallback h4 { font-size: 16px; font-weight: 700; color: var(--gray-800); }
-  .pdf-fallback p { font-size: 13px; color: var(--gray-500); max-width: 300px; line-height: 1.6; }
+  .contact-wrap { background: var(--gray-900); padding: 80px 2rem; }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .c-eyebrow { font-size: 12px; font-weight: 700; color: var(--blue-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .c-heading { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .c-heading span { color: var(--blue-400); }
+  .c-sub { font-size: 15px; color: #94A3B8; line-height: 1.7; }
+  .c-cards { display: flex; flex-direction: column; gap: 12px; }
+  .c-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 16px 20px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: all 0.2s; }
+  .c-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(59,130,246,0.5); transform: translateX(4px); }
+  .c-icon { width: 42px; height: 42px; background: rgba(59,130,246,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; border: 1px solid rgba(59,130,246,0.25); }
+  .c-lbl { font-size: 10px; font-weight: 700; color: var(--blue-400); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px; }
+  .c-val { font-size: 13.5px; font-weight: 500; color: #CBD5E1; }
 
-  /* ── FOOTER ── */
   footer { background: var(--gray-900); border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 2rem; display: flex; justify-content: space-between; align-items: center; }
   footer p { font-size: 12px; color: #475569; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 820px) {
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .hero-text > * { animation: fadeUp 0.55s ease both; }
+  .hero-text > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.35s; }
+  .hero-card { animation: fadeUp 0.55s ease 0.2s both; }
+
+  @media (max-width: 768px) {
     nav { padding: 0 1rem; }
     .nav-links a:not(.nav-cta) { display: none; }
-    .page-header { padding: 40px 1.25rem 32px; }
-    .projects-layout { grid-template-columns: 1fr; padding: 0 1.25rem 64px; }
-    .sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
-    .proj-btn { flex: 1 1 140px; }
-    .pv-header { padding: 20px 20px 16px; }
-    .pv-pdf-toolbar { padding: 8px 12px; }
+    .hero { grid-template-columns: 1fr; padding: 40px 1.25rem 48px; gap: 2rem; }
+    .section { padding: 48px 1.25rem; }
+    .exp-card { grid-template-columns: 1fr; gap: 1rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-wrap { padding: 56px 1.25rem; }
     footer { flex-direction: column; gap: 6px; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-brand">
+  <div class="nav-brand">
     <div class="nav-avatar">MG</div>
     <span class="nav-name">Melvin Green</span>
-  </a>
+  </div>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#skills">Skills</a>
-    <a href="index.html#experience">Experience</a>
-    <a href="projects.html" class="active">Projects</a>
-    <a href="index.html#contact" class="nav-cta">Contact Me</a>
+    <a href="projects.html">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact" class="nav-cta">Contact Me</a>
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-left">
-    <div class="eyebrow">AWS Projects</div>
-    <h1 class="page-title">Hands-on cloud labs</h1>
-    <p class="page-sub">Nineteen real AWS projects built from scratch. Click any project to read the full write-up with embedded documentation.</p>
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-available">Open to opportunities</div>
+    <h1>Cloud Support<br>Engineer &amp; <span class="hi">AWS</span><br>Practitioner</h1>
+    <p class="hero-sub">5+ years in technical support, now building hands-on AWS cloud skills. Experienced with VPC, IAM, S3, EC2, and CloudWatch. CompTIA Network+ certified and actively growing in cloud infrastructure.</p>
+    <div class="hero-actions">
+      <a href="projects.html" class="btn btn-primary">View My Projects →</a>
+      <a href="mailto:Melvingreen1031@gmail.com" class="btn btn-ghost">Get In Touch</a>
+    </div>
   </div>
-  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+
+  <div class="hero-card">
+    <div class="hc-header">
+      <div class="hc-avatar">MG</div>
+      <div>
+        <div class="hc-name">Melvin Green</div>
+        <div class="hc-role">Cloud Support Engineer · Woodbridge, NJ</div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-lbl">Years technical support</div></div>
+      <div class="stat-box"><div class="stat-num">20</div><div class="stat-lbl">AWS projects completed</div></div>
+      <div class="stat-box"><div class="stat-num">N+</div><div class="stat-lbl">CompTIA certified</div></div>
+      <div class="stat-box"><div class="stat-num">AWS</div><div class="stat-lbl">Core services hands-on</div></div>
+    </div>
+    <div class="cert-lbl">Certifications</div>
+    <div class="cert-tags">
+      <span class="cert-tag">CompTIA Network+</span>
+      <span class="cert-tag">Google Analytics</span>
+      <span class="cert-tag">Google Search</span>
+      <span class="cert-tag">Facebook Blueprint</span>
+    </div>
+  </div>
 </div>
 
-<!-- MAIN LAYOUT -->
-<div class="projects-layout">
+<hr class="divider">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-label">All Projects</div>
+<section class="section" id="projects">
+  <div class="eyebrow">AWS Projects</div>
+  <div class="sec-title">Hands-on cloud labs</div>
+  <div class="projects-grid">
 
-    <button class="proj-btn active" onclick="showProject('p1', this)">
-      <div class="proj-btn-icon" style="background:#EFF6FF;">☁️</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">01</div>
-        <div class="proj-btn-title">AWS Account Setup &amp; Security</div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#EFF6FF;">☁️</div>
+        <span class="pc-num">01</span>
       </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p2', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🪣</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">02</div>
-        <div class="proj-btn-title">Host a Website on Amazon S3</div>
+      <h3>AWS Account Setup &amp; Security</h3>
+      <p>Set up a secure AWS account from scratch — configuring root user credentials, enabling MFA via authenticator app, setting up billing alerts with CloudWatch and SNS, and activating Free Tier safeguards to prevent unexpected charges.</p>
+      <div class="p-tags">
+        <span class="tag">IAM</span><span class="tag">CloudWatch</span><span class="tag">SNS</span><span class="tag">MFA</span><span class="tag">Root Security</span>
       </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p3', this)">
-      <div class="proj-btn-icon" style="background:#EFF6FF;">🌐</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">03</div>
-        <div class="proj-btn-title">Build a Virtual Private Cloud</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p4', this)">
-      <div class="proj-btn-icon" style="background:#FFF7ED;">🔒</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">04</div>
-        <div class="proj-btn-title">VPC Traffic Flow &amp; Security</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p5', this)">
-      <div class="proj-btn-icon" style="background:#F5F3FF;">🛡️</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">05</div>
-        <div class="proj-btn-title">Cloud Security with AWS IAM</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p6', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🔐</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">06</div>
-        <div class="proj-btn-title">Creating a Private Subnet</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p7', this)">
-      <div class="proj-btn-icon" style="background:#EFF6FF;">🚀</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">07</div>
-        <div class="proj-btn-title">Launching VPC Resources</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p8', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🔗</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">08</div>
-        <div class="proj-btn-title">Testing VPC Connectivity</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p9', this)">
-      <div class="proj-btn-icon" style="background:#FFF7ED;">🔀</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">09</div>
-        <div class="proj-btn-title">VPC Peering</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p10', this)">
-      <div class="proj-btn-icon" style="background:#EFF6FF;">📊</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">10</div>
-        <div class="proj-btn-title">VPC Monitoring with Flow Logs</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p11', this)">
-      <div class="proj-btn-icon" style="background:#F5F3FF;">🔑</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">11</div>
-        <div class="proj-btn-title">Access S3 from a VPC</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p12', this)">
-      <div class="proj-btn-icon" style="background:#FFF7ED;">🚪</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">12</div>
-        <div class="proj-btn-title">VPC Endpoints</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p13', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🌍</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">13</div>
-        <div class="proj-btn-title">Website Delivery with CloudFront</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p14', this)">
-      <div class="proj-btn-icon" style="background:#FEF9C3;">⚡</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">14</div>
-        <div class="proj-btn-title">APIs with Lambda + API Gateway</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p15', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🗄️</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">15</div>
-        <div class="proj-btn-title">Fetch Data with AWS Lambda</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p16', this)">
-      <div class="proj-btn-icon" style="background:#EFF6FF;">🏗️</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">16</div>
-        <div class="proj-btn-title">Build a Three-Tier Web App</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p17', this)">
-      <div class="proj-btn-icon" style="background:#F0FDF4;">🗃️</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">17</div>
-        <div class="proj-btn-title">Connect a Web App to Amazon Aurora</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p18', this)">
-      <div class="proj-btn-icon" style="background:#FDF4FF;">🔌</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">18</div>
-        <div class="proj-btn-title">Aurora Web App with LAMP Stack</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-
-    <button class="proj-btn" onclick="showProject('p19', this)">
-      <div class="proj-btn-icon" style="background:#FFFBEB;">📦</div>
-      <div class="proj-btn-text">
-        <div class="proj-btn-num">19</div>
-        <div class="proj-btn-title">Load Data into a DynamoDB Table</div>
-      </div>
-      <span class="proj-btn-arrow">›</span>
-    </button>
-  </aside>
-
-  <!-- VIEWER PANEL -->
-  <main class="viewer-panel">
-
-    <!-- PROJECT 1 -->
-    <div class="project-view visible" id="p1">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#EFF6FF;">☁️</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 01</div>
-            <div class="pv-title">AWS Account Setup &amp; Security</div>
-          </div>
-        </div>
-        <p class="pv-desc">Set up a secure AWS account from scratch — configuring root user credentials, enabling MFA via authenticator app, setting up billing alerts with CloudWatch and SNS, and activating Free Tier safeguards to prevent unexpected charges.</p>
-        <div class="pv-tags">
-          <span class="tag">IAM</span><span class="tag">CloudWatch</span><span class="tag">SNS</span><span class="tag">MFA</span><span class="tag">Root Security</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Set_Up_an_AWS_Account.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Set_Up_an_AWS_Account.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Set_Up_an_AWS_Account.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Set_Up_an_AWS_Account.pdf" title="AWS Account Setup PDF"></iframe>
-        </div>
-      </div>
+      <a href="projects.html?p=p1" class="p-link">View Project →</a>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="project-view" id="p2">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🪣</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 02</div>
-            <div class="pv-title">Host a Website on Amazon S3</div>
-          </div>
-        </div>
-        <p class="pv-desc">Deployed a static website to Amazon S3, configuring bucket policies, ACLs, and public access settings. Troubleshot and resolved a 403 Forbidden error by correctly managing object-level permissions alongside bucket-level settings.</p>
-        <div class="pv-tags">
-          <span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">ACLs</span><span class="tag">Static Hosting</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🪣</div>
+        <span class="pc-num">02</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Host_a_Website_on_Amazon_S3.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Host_a_Website_on_Amazon_S3.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Host_a_Website_on_Amazon_S3.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Host_a_Website_on_Amazon_S3.pdf" title="S3 Static Website PDF"></iframe>
-        </div>
+      <h3>Host a Website on Amazon S3</h3>
+      <p>Deployed a static website to Amazon S3, configuring bucket policies, ACLs, and public access settings. Troubleshot and resolved a 403 Forbidden error by correctly managing object-level permissions alongside bucket-level settings.</p>
+      <div class="p-tags">
+        <span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">ACLs</span><span class="tag">Static Hosting</span>
       </div>
+      <a href="projects.html?p=p2" class="p-link">View Project →</a>
     </div>
 
-    <!-- PROJECT 3 -->
-    <div class="project-view" id="p3">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#EFF6FF;">🌐</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 03</div>
-            <div class="pv-title">Build a Virtual Private Cloud (VPC)</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built an Amazon VPC from scratch — defining CIDR blocks, creating public and private subnets, attaching an Internet Gateway, and configuring route tables. Also used AWS CloudShell and CLI to create resources programmatically.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC</span><span class="tag">Subnets</span><span class="tag">Internet Gateway</span><span class="tag">Route Tables</span><span class="tag">AWS CLI</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#EFF6FF;">🌐</div>
+        <span class="pc-num">03</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Build_a_Virtual_Private_Cloud__VPC_.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Build_a_Virtual_Private_Cloud__VPC_.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Build_a_Virtual_Private_Cloud__VPC_.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Build_a_Virtual_Private_Cloud__VPC_.pdf" title="VPC Build PDF"></iframe>
-        </div>
+      <h3>Build a Virtual Private Cloud (VPC)</h3>
+      <p>Built an Amazon VPC from scratch — defining CIDR blocks, creating public and private subnets, attaching an Internet Gateway, and configuring route tables. Also used AWS CloudShell and CLI to create resources programmatically.</p>
+      <div class="p-tags">
+        <span class="tag">VPC</span><span class="tag">Subnets</span><span class="tag">Internet Gateway</span><span class="tag">Route Tables</span><span class="tag">AWS CLI</span>
       </div>
+      <a href="projects.html?p=p3" class="p-link">View Project →</a>
     </div>
 
-    <!-- PROJECT 4 -->
-    <div class="project-view" id="p4">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FFF7ED;">🔒</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 04</div>
-            <div class="pv-title">VPC Traffic Flow &amp; Security</div>
-          </div>
-        </div>
-        <p class="pv-desc">Configured Security Groups and Network ACLs to control inbound and outbound traffic. Implemented layered security at both resource and subnet levels, and deployed resources across multiple regions to explore EC2 Global View.</p>
-        <div class="pv-tags">
-          <span class="tag">Security Groups</span><span class="tag">Network ACLs</span><span class="tag">Multi-Region</span><span class="tag">EC2 Global View</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FFF7ED;">🔒</div>
+        <span class="pc-num">04</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> VPC_Traffic_Flow_and_Security.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/VPC_Traffic_Flow_and_Security.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/VPC_Traffic_Flow_and_Security.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/VPC_Traffic_Flow_and_Security.pdf" title="VPC Traffic Flow PDF"></iframe>
-        </div>
+      <h3>VPC Traffic Flow &amp; Security</h3>
+      <p>Configured Security Groups and Network ACLs to control inbound and outbound traffic. Implemented layered security at both resource and subnet levels, and deployed resources across multiple regions to explore EC2 Global View.</p>
+      <div class="p-tags">
+        <span class="tag">Security Groups</span><span class="tag">Network ACLs</span><span class="tag">Multi-Region</span><span class="tag">EC2 Global View</span>
       </div>
+      <a href="projects.html?p=p4" class="p-link">View Project →</a>
     </div>
 
-    <!-- PROJECT 5 -->
-    <div class="project-view" id="p5">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F5F3FF;">🛡️</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 05</div>
-            <div class="pv-title">Cloud Security with AWS IAM</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built a real-world IAM access control setup — creating users, user groups, and a multi-statement JSON policy restricting interns to development EC2 instances only. Verified using live testing and the IAM Policy Simulator.</p>
-        <div class="pv-tags">
-          <span class="tag">IAM</span><span class="tag">EC2</span><span class="tag">JSON Policies</span><span class="tag">User Groups</span><span class="tag">Policy Simulator</span><span class="tag">Resource Tagging</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F5F3FF;">🛡️</div>
+        <span class="pc-num">05</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Cloud_Security_with_AWS_IAM.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Cloud_Security_with_AWS_IAM.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Cloud_Security_with_AWS_IAM.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Cloud_Security_with_AWS_IAM.pdf" title="AWS IAM PDF"></iframe>
-        </div>
+      <h3>Cloud Security with AWS IAM</h3>
+      <p>Built a real-world IAM access control setup — creating users, user groups, and a multi-statement JSON policy restricting interns to development EC2 instances only. Verified using live testing and the IAM Policy Simulator. Configured account aliases for simpler sign-in URLs.</p>
+      <div class="p-tags">
+        <span class="tag">IAM</span><span class="tag">EC2</span><span class="tag">JSON Policies</span><span class="tag">User Groups</span><span class="tag">Policy Simulator</span><span class="tag">Resource Tagging</span>
       </div>
-    </div>
-
-    <!-- PROJECT 6 -->
-    <div class="project-view" id="p6">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🔐</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 06</div>
-            <div class="pv-title">Creating a Private Subnet</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built a private subnet inside an Amazon VPC, configured a dedicated route table with no internet gateway route, and set up a custom Network ACL that denies all inbound and outbound traffic to fully isolate the subnet from the internet.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC</span><span class="tag">Private Subnet</span><span class="tag">Route Tables</span><span class="tag">Network ACLs</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Creating_a_Private_Subnet.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Creating_a_Private_Subnet.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Creating_a_Private_Subnet.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Creating_a_Private_Subnet.pdf" title="Creating a Private Subnet PDF"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 7 -->
-    <div class="project-view" id="p7">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#EFF6FF;">🚀</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 07</div>
-            <div class="pv-title">Launching VPC Resources</div>
-          </div>
-        </div>
-        <p class="pv-desc">Launched public and private EC2 instances inside a VPC, configured key pairs for secure SSH access, set up dedicated security groups for each server, and used the "VPC and more" option to rapidly deploy a full VPC infrastructure including subnets, route tables, and internet gateways.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">SSH</span><span class="tag">Key Pairs</span><span class="tag">Security Groups</span><span class="tag">NAT Gateway</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Launching_VPC_Resources.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Launching_VPC_Resources.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Launching_VPC_Resources.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Launching_VPC_Resources.pdf" title="Launching VPC Resources PDF"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 8 -->
-    <div class="project-view" id="p8">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🔗</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 08</div>
-            <div class="pv-title">Testing VPC Connectivity</div>
-          </div>
-        </div>
-        <p class="pv-desc">Launched public and private EC2 instances, connected via EC2 Instance Connect, and tested connectivity using ping and curl. Troubleshot ICMP traffic issues by updating Network ACLs and security group rules to allow communication between servers.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">Ping</span><span class="tag">Curl</span><span class="tag">ICMP</span><span class="tag">Network ACLs</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> Testing_vpc_connectivity.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/Testing_vpc_connectivity.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/Testing_vpc_connectivity.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/Testing_vpc_connectivity.pdf" title="Testing VPC Connectivity PDF"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 9 -->
-    <div class="project-view" id="p9">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FFF7ED;">🔀</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 09</div>
-            <div class="pv-title">VPC Peering</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built a multi-VPC architecture by creating two VPCs with unique CIDR blocks, establishing a peering connection, updating route tables on both sides, and validating connectivity using ping. Troubleshot EC2 Instance Connect errors by assigning Elastic IP addresses and resolved ping failures by enabling ICMP traffic in security groups.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC Peering</span><span class="tag">Elastic IP</span><span class="tag">ICMP</span><span class="tag">Route Tables</span><span class="tag">EC2</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> vpc_peering.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/vpc_peering.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/vpc_peering.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/vpc_peering.pdf" title="VPC Peering PDF"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 10 -->
-    <div class="project-view" id="p10">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#EFF6FF;">📊</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 10</div>
-            <div class="pv-title">VPC Monitoring with Flow Logs</div>
-          </div>
-        </div>
-        <p class="pv-desc">Set up VPC Flow Logs to monitor network traffic across two peered VPCs, configured IAM policies and roles to allow log delivery to CloudWatch, troubleshot connectivity issues using ping, and analyzed traffic data using CloudWatch Logs Insights queries.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC Flow Logs</span><span class="tag">CloudWatch</span><span class="tag">IAM Roles</span><span class="tag">Logs Insights</span><span class="tag">VPC Peering</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> vpc_monitoring_with_flow_logs.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/vpc_monitoring_with_flow_logs.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/vpc_monitoring_with_flow_logs.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/vpc_monitoring_with_flow_logs.pdf" title="VPC Monitoring with Flow Logs PDF"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT 11 -->
-    <div class="project-view" id="p11">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F5F3FF;">🔑</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 11</div>
-            <div class="pv-title">Access S3 from a VPC</div>
-          </div>
-        </div>
-        <p class="pv-desc">Launched a VPC with a public subnet and EC2 instance, configured AWS CLI access keys to authenticate the instance against AWS, and used CLI commands to list, upload, and verify objects in an S3 bucket — demonstrating how compute resources inside a VPC securely interact with storage outside it.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">S3</span><span class="tag">AWS CLI</span><span class="tag">Access Keys</span><span class="tag">IAM Roles</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> access_s3_from_a_vpc.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/access_s3_from_a_vpc.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/access_s3_from_a_vpc.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/access_s3_from_a_vpc.pdf" title="Access S3 from a VPC PDF"></iframe>
-        </div>
-      </div>
+      <a href="projects.html?p=p5" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 12 -->
-    <div class="project-view" id="p12">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FFF7ED;">🚪</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 12</div>
-            <div class="pv-title">VPC Endpoints</div>
-          </div>
-        </div>
-        <p class="pv-desc">Created an S3 Gateway Endpoint to give an EC2 instance private access to an S3 bucket without routing through the internet gateway, then enforced that boundary with a bucket policy scoped to the endpoint's ID. Updated the route table to direct S3 traffic to the endpoint and validated enforcement by toggling the endpoint policy between Allow and Deny.</p>
-        <div class="pv-tags">
-          <span class="tag">VPC Endpoints</span><span class="tag">Gateway Endpoint</span><span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">Endpoint Policies</span><span class="tag">Route Tables</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🔐</div>
+        <span class="pc-num">06</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> vpc_endpoints.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/vpc_endpoints.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/vpc_endpoints.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/vpc_endpoints.pdf" title="VPC Endpoints PDF"></iframe>
-        </div>
+      <h3>Creating a Private Subnet</h3>
+      <p>Built a private subnet inside an Amazon VPC, configured a dedicated route table with no internet gateway route, and set up a custom Network ACL that denies all inbound and outbound traffic to fully isolate the subnet.</p>
+      <div class="p-tags">
+        <span class="tag">VPC</span><span class="tag">Private Subnet</span><span class="tag">Route Tables</span><span class="tag">Network ACLs</span>
       </div>
-    </div>
-
-    <!-- PROJECT 13 -->
-    <div class="project-view" id="p13">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🌍</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 13</div>
-            <div class="pv-title">Website Delivery with CloudFront</div>
-          </div>
-        </div>
-        <p class="pv-desc">Deployed a static website to S3 and distributed it globally using Amazon CloudFront. Configured a CloudFront distribution with an S3 origin, set up Origin Access Control (OAC) to keep the bucket private while allowing CloudFront access, and compared load times and security between direct S3 hosting and CloudFront delivery.</p>
-        <div class="pv-tags">
-          <span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">CDN</span><span class="tag">OAC</span><span class="tag">Distributions</span><span class="tag">Static Hosting</span>
-        </div>
-      </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> website_delivery_with_cloudfront.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/website_delivery_with_cloudfront.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/website_delivery_with_cloudfront.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/website_delivery_with_cloudfront.pdf" title="Website Delivery with CloudFront PDF"></iframe>
-        </div>
-      </div>
+      <a href="projects.html?p=p6" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 14 -->
-    <div class="project-view" id="p14">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FEF9C3;">⚡</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 14</div>
-            <div class="pv-title">APIs with Lambda + API Gateway</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built the logic tier of a three-tier architecture by writing a Lambda function to retrieve user data from DynamoDB, then exposed it via a REST API in Amazon API Gateway. Configured a GET method with Lambda proxy integration, deployed to a Prod stage, and wrote and published OpenAPI documentation for the API.</p>
-        <div class="pv-tags">
-          <span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">REST API</span><span class="tag">Serverless</span><span class="tag">DynamoDB</span><span class="tag">OpenAPI</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#EFF6FF;">🚀</div>
+        <span class="pc-num">07</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> apis_with_lambda_api_gateway.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/apis_with_lambda_api_gateway.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/apis_with_lambda_api_gateway.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/apis_with_lambda_api_gateway.pdf" title="APIs with Lambda + API Gateway PDF"></iframe>
-        </div>
+      <h3>Launching VPC Resources</h3>
+      <p>Launched public and private EC2 instances inside a VPC, configured key pairs for secure SSH access, set up dedicated security groups for each server, and used the "VPC and more" option to rapidly deploy a full VPC infrastructure including subnets, route tables, and internet gateways.</p>
+      <div class="p-tags">
+        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">SSH</span><span class="tag">Key Pairs</span><span class="tag">Security Groups</span><span class="tag">NAT Gateway</span>
       </div>
+      <a href="projects.html?p=p7" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 15 -->
-    <div class="project-view" id="p15">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🗄️</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 15</div>
-            <div class="pv-title">Fetch Data with AWS Lambda</div>
-          </div>
-        </div>
-        <p class="pv-desc">Set up a DynamoDB table as the data tier of a three-tier architecture, then wrote a Lambda function using the AWS SDK to query it by userId. Debugged an IAM Access Denied error by reading the error message to identify the missing permission, chose AmazonDynamoDBReadOnlyAccess over broader policies, and then hardened security further by writing a custom inline policy scoped to a single table.</p>
-        <div class="pv-tags">
-          <span class="tag">DynamoDB</span><span class="tag">Lambda</span><span class="tag">IAM</span><span class="tag">Inline Policies</span><span class="tag">Execution Roles</span><span class="tag">NoSQL</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🔗</div>
+        <span class="pc-num">08</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> fetch_data_with_aws_lambda.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/fetch_data_with_aws_lambda.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/fetch_data_with_aws_lambda.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/fetch_data_with_aws_lambda.pdf" title="Fetch Data with AWS Lambda PDF"></iframe>
-        </div>
+      <h3>Testing VPC Connectivity</h3>
+      <p>Launched public and private EC2 instances, connected via EC2 Instance Connect, and tested connectivity using ping and curl. Troubleshot ICMP traffic issues by updating Network ACLs and security group rules to allow communication between servers.</p>
+      <div class="p-tags">
+        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">Ping</span><span class="tag">Curl</span><span class="tag">ICMP</span><span class="tag">Network ACLs</span>
       </div>
+      <a href="projects.html?p=p8" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 16 -->
-    <div class="project-view" id="p16">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#EFF6FF;">🏗️</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 16</div>
-            <div class="pv-title">Build a Three-Tier Web App</div>
-          </div>
-        </div>
-        <p class="pv-desc">Assembled all three tiers of a production-style architecture from scratch: CloudFront + S3 for the presentation tier, Lambda + API Gateway for the logic tier, and DynamoDB for the data tier. Debugged real-world issues including a script.js placeholder error and a CORS error caused by Lambda proxy integration, resolving it by scoping Access-Control-Allow-Origin to the CloudFront domain rather than using a wildcard.</p>
-        <div class="pv-tags">
-          <span class="tag">Three-Tier Architecture</span><span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">DynamoDB</span><span class="tag">CORS</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FFF7ED;">🔀</div>
+        <span class="pc-num">09</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> building_a_tier_three_webapp.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/building_a_tier_three_webapp.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/building_a_tier_three_webapp.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/building_a_tier_three_webapp.pdf" title="Build a Three-Tier Web App PDF"></iframe>
-        </div>
+      <h3>VPC Peering</h3>
+      <p>Built a multi-VPC architecture by creating two VPCs with unique CIDR blocks, establishing a peering connection, updating route tables on both sides, and validating connectivity using ping. Troubleshot EC2 Instance Connect errors by assigning Elastic IP addresses and resolved ping failures by enabling ICMP traffic in security groups.</p>
+      <div class="p-tags">
+        <span class="tag">VPC Peering</span><span class="tag">Elastic IP</span><span class="tag">ICMP</span><span class="tag">Route Tables</span><span class="tag">EC2</span>
       </div>
+      <a href="projects.html?p=p9" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 17 -->
-    <div class="project-view" id="p17">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#F0FDF4;">🗃️</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 17</div>
-            <div class="pv-title">Connect a Web App to Amazon Aurora</div>
-          </div>
-        </div>
-        <p class="pv-desc">Created an Amazon Aurora MySQL cluster and connected it to an EC2 instance acting as a web server. Learned how Aurora clusters use a primary instance and read replicas to ensure high availability, and how AWS automatically handles VPC, DB subnet group, and security group configuration when linking EC2 to RDS.</p>
-        <div class="pv-tags">
-          <span class="tag">Aurora</span><span class="tag">RDS</span><span class="tag">EC2</span><span class="tag">MySQL</span><span class="tag">Relational Databases</span><span class="tag">VPC</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#EFF6FF;">📊</div>
+        <span class="pc-num">10</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> connect_a_web_app_to_amazon_aurora.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/connect_a_web_app_to_amazon_aurora.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/connect_a_web_app_to_amazon_aurora.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/connect_a_web_app_to_amazon_aurora.pdf" title="Connect a Web App to Amazon Aurora PDF"></iframe>
-        </div>
+      <h3>VPC Monitoring with Flow Logs</h3>
+      <p>Set up VPC Flow Logs to monitor network traffic across two peered VPCs, configured IAM policies and roles to allow log delivery to CloudWatch, troubleshot connectivity issues using ping, and analyzed traffic data using CloudWatch Logs Insights queries.</p>
+      <div class="p-tags">
+        <span class="tag">VPC Flow Logs</span><span class="tag">CloudWatch</span><span class="tag">IAM Roles</span><span class="tag">Logs Insights</span><span class="tag">VPC Peering</span>
       </div>
+      <a href="projects.html?p=p10" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 18 -->
-    <div class="project-view" id="p18">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FDF4FF;">🔌</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 18</div>
-            <div class="pv-title">Aurora Web App with LAMP Stack</div>
-          </div>
-        </div>
-        <p class="pv-desc">Built a dynamic database-driven web app on EC2 using a LAMP-style stack (Apache, PHP, php-mysqli, MariaDB), connected it to an Amazon Aurora MySQL cluster, and verified end-to-end data flow by submitting form data and querying it back via the MySQL CLI. Navigated real Linux CLI challenges including SSH key permissions with chmod 400, file ownership with chown, and editing config files in nano.</p>
-        <div class="pv-tags">
-          <span class="tag">Aurora</span><span class="tag">EC2</span><span class="tag">LAMP Stack</span><span class="tag">MySQL CLI</span><span class="tag">PHP</span><span class="tag">Apache</span><span class="tag">Linux</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F5F3FF;">🔑</div>
+        <span class="pc-num">11</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> connect_a_web_app_to_amazon_aurora_project2.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/connect_a_web_app_to_amazon_aurora_project2.pdf" title="Aurora Web App with LAMP Stack PDF"></iframe>
-        </div>
+      <h3>Access S3 from a VPC</h3>
+      <p>Launched a VPC with a public subnet and EC2 instance, configured AWS CLI access keys to authenticate the instance against AWS, and used CLI commands to list, upload, and verify objects in an S3 bucket — demonstrating how compute resources inside a VPC securely interact with storage outside it.</p>
+      <div class="p-tags">
+        <span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">S3</span><span class="tag">AWS CLI</span><span class="tag">Access Keys</span><span class="tag">IAM Roles</span>
       </div>
+      <a href="projects.html?p=p11" class="p-link">View Project →</a>
     </div>
 
 
-    <!-- PROJECT 19 -->
-    <div class="project-view" id="p19">
-      <div class="pv-header">
-        <div class="pv-top">
-          <div class="pv-icon" style="background:#FFFBEB;">📦</div>
-          <div class="pv-meta">
-            <div class="pv-num">Project 19</div>
-            <div class="pv-title">Load Data into a DynamoDB Table</div>
-          </div>
-        </div>
-        <p class="pv-desc">Created multiple DynamoDB tables using the AWS CLI in CloudShell, then bulk-loaded JSON data using batch-write-item. Explored DynamoDB's schema-less flexibility by observing items with different attribute sets in the same table, learned the difference between RCUs and WCUs, and compared DynamoDB's speed and flexibility advantages over relational databases.</p>
-        <div class="pv-tags">
-          <span class="tag">DynamoDB</span><span class="tag">AWS CLI</span><span class="tag">CloudShell</span><span class="tag">NoSQL</span><span class="tag">batch-write-item</span><span class="tag">RCU/WCU</span>
-        </div>
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FFF7ED;">🚪</div>
+        <span class="pc-num">12</span>
       </div>
-      <div class="pv-pdf-wrap">
-        <div class="pv-pdf-toolbar">
-          <div class="pv-pdf-filename"><span>📄</span> data_into_a_dynamodb_table_.pdf</div>
-          <div class="pv-pdf-actions">
-            <a class="pdf-action-btn btn-open" href="projects/data_into_a_dynamodb_table_.pdf" target="_blank">Open in Tab ↗</a>
-            <a class="pdf-action-btn btn-download" href="projects/data_into_a_dynamodb_table_.pdf" download>⬇ Download</a>
-          </div>
-        </div>
-        <div class="pdf-embed-wrap">
-          <iframe src="projects/data_into_a_dynamodb_table_.pdf" title="Load Data into a DynamoDB Table PDF"></iframe>
-        </div>
+      <h3>VPC Endpoints</h3>
+      <p>Created an S3 Gateway Endpoint to give an EC2 instance private access to an S3 bucket without routing through the internet gateway, then enforced that boundary with a bucket policy scoped to the endpoint's ID. Updated the route table to direct S3 traffic to the endpoint and validated enforcement by toggling the endpoint policy between Allow and Deny.</p>
+      <div class="p-tags">
+        <span class="tag">VPC Endpoints</span><span class="tag">Gateway Endpoint</span><span class="tag">S3</span><span class="tag">Bucket Policies</span><span class="tag">Endpoint Policies</span><span class="tag">Route Tables</span>
+      </div>
+      <a href="projects.html?p=p12" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🌍</div>
+        <span class="pc-num">13</span>
+      </div>
+      <h3>Website Delivery with CloudFront</h3>
+      <p>Deployed a static website to S3 and distributed it globally using Amazon CloudFront. Configured a CloudFront distribution with an S3 origin, set up Origin Access Control (OAC) to keep the bucket private while allowing CloudFront access, and compared load times and security between direct S3 hosting and CloudFront delivery.</p>
+      <div class="p-tags">
+        <span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">CDN</span><span class="tag">OAC</span><span class="tag">Distributions</span><span class="tag">Static Hosting</span>
+      </div>
+      <a href="projects.html?p=p13" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FEF9C3;">⚡</div>
+        <span class="pc-num">14</span>
+      </div>
+      <h3>APIs with Lambda + API Gateway</h3>
+      <p>Built the logic tier of a three-tier architecture by writing a Lambda function to retrieve user data from DynamoDB, then exposed it via a REST API in Amazon API Gateway. Configured a GET method with Lambda proxy integration, deployed to a Prod stage, and wrote and published OpenAPI documentation for the API.</p>
+      <div class="p-tags">
+        <span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">REST API</span><span class="tag">Serverless</span><span class="tag">DynamoDB</span><span class="tag">OpenAPI</span>
+      </div>
+      <a href="projects.html?p=p14" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🗄️</div>
+        <span class="pc-num">15</span>
+      </div>
+      <h3>Fetch Data with AWS Lambda</h3>
+      <p>Set up a DynamoDB table as the data tier of a three-tier architecture, then wrote a Lambda function using the AWS SDK to query it by userId. Debugged an IAM Access Denied error by reading the error message to identify the missing permission, chose AmazonDynamoDBReadOnlyAccess over broader policies, and then hardened security further by writing a custom inline policy scoped to a single table.</p>
+      <div class="p-tags">
+        <span class="tag">DynamoDB</span><span class="tag">Lambda</span><span class="tag">IAM</span><span class="tag">Inline Policies</span><span class="tag">Execution Roles</span><span class="tag">NoSQL</span>
+      </div>
+      <a href="projects.html?p=p15" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#EFF6FF;">🏗️</div>
+        <span class="pc-num">16</span>
+      </div>
+      <h3>Build a Three-Tier Web App</h3>
+      <p>Assembled all three tiers of a production-style architecture from scratch: CloudFront + S3 for the presentation tier, Lambda + API Gateway for the logic tier, and DynamoDB for the data tier. Debugged real-world issues including a script.js placeholder error and a CORS error caused by Lambda proxy integration, resolving it by scoping Access-Control-Allow-Origin to the CloudFront domain rather than using a wildcard.</p>
+      <div class="p-tags">
+        <span class="tag">Three-Tier Architecture</span><span class="tag">CloudFront</span><span class="tag">S3</span><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">DynamoDB</span><span class="tag">CORS</span>
+      </div>
+      <a href="projects.html?p=p16" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0FDF4;">🗃️</div>
+        <span class="pc-num">17</span>
+      </div>
+      <h3>Connect a Web App to Amazon Aurora</h3>
+      <p>Created an Amazon Aurora MySQL cluster and connected it to an EC2 instance acting as a web server. Learned how Aurora clusters use a primary instance and read replicas to ensure high availability, and how AWS automatically handles VPC, DB subnet group, and security group configuration when linking EC2 to RDS.</p>
+      <div class="p-tags">
+        <span class="tag">Aurora</span><span class="tag">RDS</span><span class="tag">EC2</span><span class="tag">MySQL</span><span class="tag">Relational Databases</span><span class="tag">VPC</span>
+      </div>
+      <a href="projects.html?p=p17" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FDF4FF;">🔌</div>
+        <span class="pc-num">18</span>
+      </div>
+      <h3>Aurora Web App with LAMP Stack</h3>
+      <p>Built a dynamic database-driven web app on EC2 using a LAMP-style stack (Apache, PHP, php-mysqli, MariaDB), connected it to an Amazon Aurora MySQL cluster, and verified end-to-end data flow by submitting form data and querying it back via the MySQL CLI. Navigated real Linux CLI challenges including SSH key permissions with chmod 400, file ownership with chown, and editing config files in nano.</p>
+      <div class="p-tags">
+        <span class="tag">Aurora</span><span class="tag">EC2</span><span class="tag">LAMP Stack</span><span class="tag">MySQL CLI</span><span class="tag">PHP</span><span class="tag">Apache</span><span class="tag">Linux</span>
+      </div>
+      <a href="projects.html?p=p18" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#FFFBEB;">📦</div>
+        <span class="pc-num">19</span>
+      </div>
+      <h3>Load Data into a DynamoDB Table</h3>
+      <p>Created multiple DynamoDB tables using the AWS CLI in CloudShell, then bulk-loaded JSON data using batch-write-item. Explored DynamoDB's schema-less flexibility by observing items with different attribute sets in the same table, learned the difference between RCUs and WCUs, and compared DynamoDB's speed and flexibility advantages over relational databases.</p>
+      <div class="p-tags">
+        <span class="tag">DynamoDB</span><span class="tag">AWS CLI</span><span class="tag">CloudShell</span><span class="tag">NoSQL</span><span class="tag">batch-write-item</span><span class="tag">RCU/WCU</span>
+      </div>
+      <a href="projects.html?p=p19" class="p-link">View Project →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="pc-top">
+        <div class="pc-icon" style="background:#F0F9FF;">🔍</div>
+        <span class="pc-num">20</span>
+      </div>
+      <h3>Query Data with DynamoDB</h3>
+      <p>Ran advanced queries and scans on DynamoDB tables using both the AWS Console and CLI, using partition keys, sort keys, projection expressions, consistent reads, and return-consumed-capacity flags. Discovered the limits of querying non-key attributes and learned when a Global Secondary Index is needed. Executed a multi-table transaction to atomically add a comment and increment a forum's comment count in a single operation.</p>
+      <div class="p-tags">
+        <span class="tag">DynamoDB</span><span class="tag">Queries & Scans</span><span class="tag">Transactions</span><span class="tag">AWS CLI</span><span class="tag">Partition Keys</span><span class="tag">Sort Keys</span>
+      </div>
+      <a href="projects.html?p=p20" class="p-link">View Project →</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="skills">
+  <div class="eyebrow">Technical Skills</div>
+  <div class="sec-title">Tools &amp; technologies</div>
+  <div class="skills-grid">
+
+    <div class="sg-card">
+      <div class="sg-icon" style="background:#EFF6FF;">☁️</div>
+      <div class="sg-title">AWS Services</div>
+      <div class="chips">
+        <span class="chip">IAM</span><span class="chip">VPC</span><span class="chip">S3</span><span class="chip">EC2</span><span class="chip">CloudWatch</span><span class="chip">CloudShell</span><span class="chip">AWS CLI</span><span class="chip">SNS</span>
       </div>
     </div>
 
-  </main>
+    <div class="sg-card">
+      <div class="sg-icon" style="background:#F0FDF4;">🌐</div>
+      <div class="sg-title">Networking</div>
+      <div class="chips">
+        <span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">Subnetting</span><span class="chip">CIDR</span><span class="chip">CompTIA N+</span><span class="chip">HTTP/HTTPS</span><span class="chip">VPN</span>
+      </div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-icon" style="background:#FFF7ED;">🔐</div>
+      <div class="sg-title">Security &amp; Access</div>
+      <div class="chips">
+        <span class="chip">JSON Policies</span><span class="chip">MFA</span><span class="chip">Security Groups</span><span class="chip">Network ACLs</span><span class="chip">Bucket Policies</span><span class="chip">IAM Simulator</span><span class="chip">Least Privilege</span>
+      </div>
+    </div>
+
+    <div class="sg-card">
+      <div class="sg-icon" style="background:#F5F3FF;">🖥️</div>
+      <div class="sg-title">Support &amp; Ops</div>
+      <div class="chips">
+        <span class="chip">SaaS Support</span><span class="chip">API Troubleshooting</span><span class="chip">Ticketing</span><span class="chip">Escalation</span><span class="chip">Windows OS</span><span class="chip">Incident Response</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section" id="experience">
+  <div class="eyebrow">Work History</div>
+  <div class="sec-title">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-date">Feb 2025 – Present</div>
+        <div class="exp-company">Garden State Home</div>
+      </div>
+      <div>
+        <div class="exp-title">Help Desk Analyst</div>
+        <ul class="exp-bullets">
+          <li>Provided Tier 1 support for hardware, software, authentication, and connectivity issues — directly aligned with cloud support triage workflows.</li>
+          <li>Diagnosed and resolved Windows OS, application, and access issues; escalated complex cases following structured SLA processes.</li>
+          <li>Managed user onboarding, account provisioning, and system configuration — skills applicable to cloud IAM.</li>
+          <li>Delivered empathetic technical support to non-technical users during fast-paced support queues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-date">Apr 2022 – Feb 2025</div>
+        <div class="exp-company">GrowRev</div>
+      </div>
+      <div>
+        <div class="exp-title">Technical Support Analyst – Cloud &amp; Marketing Systems</div>
+        <ul class="exp-bullets">
+          <li>Supported clients on SaaS analytics, campaign tracking, and reporting platforms — gaining hands-on exposure to cloud-hosted environments.</li>
+          <li>Diagnosed platform configuration errors, data pipeline failures, and API integration issues affecting client uptime.</li>
+          <li>Partnered with engineering teams to identify root causes of recurring system errors, improving incident response documentation.</li>
+          <li>Maintained a knowledge base of resolutions, reducing average resolution time for repeat issues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-date">Jun 2021 – Mar 2022</div>
+        <div class="exp-company">PCG Digital</div>
+      </div>
+      <div>
+        <div class="exp-title">Application Support &amp; SEM Specialist</div>
+        <ul class="exp-bullets">
+          <li>Resolved client-side technical issues including website errors, tracking code failures, and access policy violations.</li>
+          <li>Monitored system performance dashboards and implemented corrective actions to restore reliability.</li>
+          <li>Collaborated with development teams to validate fixes in staging before production deployment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-date">Apr 2019 – Jun 2021</div>
+        <div class="exp-company">Electronics Expo</div>
+      </div>
+      <div>
+        <div class="exp-title">Web Systems Technician</div>
+        <ul class="exp-bullets">
+          <li>Installed, configured, and maintained website systems and third-party software integrations.</li>
+          <li>Coordinated with vendors to resolve system outages; gained experience in multi-party incident management and escalation.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="c-eyebrow">Get In Touch</div>
+      <h2 class="c-heading">Let's work<br><span>together</span></h2>
+      <p class="c-sub">Open to cloud support engineer roles. Based in Woodbridge, NJ. Available for full-time opportunities — let's connect and chat about what you're building.</p>
+    </div>
+    <div class="c-cards">
+      <a href="mailto:Melvingreen1031@gmail.com" class="c-card">
+        <div class="c-icon">✉️</div>
+        <div><div class="c-lbl">Email</div><div class="c-val">Melvingreen1031@gmail.com</div></div>
+      </a>
+      <a href="https://linkedin.com/in/mgreen7" target="_blank" class="c-card">
+        <div class="c-icon">💼</div>
+        <div><div class="c-lbl">LinkedIn</div><div class="c-val">linkedin.com/in/mgreen7</div></div>
+      </a>
+      <a href="https://github.com/mgreen732" target="_blank" class="c-card">
+        <div class="c-icon">💻</div>
+        <div><div class="c-lbl">GitHub</div><div class="c-val">github.com/mgreen732</div></div>
+      </a>
+      <a href="tel:7328102885" class="c-card">
+        <div class="c-icon">📞</div>
+        <div><div class="c-lbl">Phone</div><div class="c-val">(732) 810-2885</div></div>
+      </a>
+    </div>
+  </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2025 Melvin Green — Cloud Support Engineer</p>
   <p>Built with GitHub Pages · Woodbridge, NJ</p>
 </footer>
 
-<script>
-  // Auto-open project from URL param e.g. projects.html?p=p2
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const p = params.get('p');
-    if (p) {
-      const btn = Array.from(document.querySelectorAll('.proj-btn')).find(b => {
-        const oc = b.getAttribute('onclick') || '';
-        return oc.includes("'" + p + "'");
-      });
-      if (btn) showProject(p, btn);
-    }
-  });
-
-  function showProject(id, btn) {
-    // Hide all views
-    document.querySelectorAll('.project-view').forEach(v => v.classList.remove('visible'));
-    // Deactivate all buttons
-    document.querySelectorAll('.proj-btn').forEach(b => b.classList.remove('active'));
-    // Show selected
-    document.getElementById(id).classList.add('visible');
-    btn.classList.add('active');
-    // On mobile, scroll the viewer into view
-    if (window.innerWidth < 820) {
-      document.querySelector('.viewer-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-</script>
 </body>
 </html>
