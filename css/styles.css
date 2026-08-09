@@ -27,3 +27,16 @@ nav{height:68px;position:sticky;top:0;z-index:50;background:rgba(248,250,252,.88
 .arch-arrow{font-weight:900;color:var(--blue)}
 .side-filter small{display:block;margin-top:3px;color:var(--blue);font-size:9px;text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:620px){.case-detail-grid{grid-template-columns:1fr}.arch-arrow{transform:rotate(90deg)}.arch-flow{align-items:flex-start}}
+/* Mobile project page: show case study before project list */
+@media (max-width: 900px) {
+  .viewer {
+    order: 1;
+  }
+
+  .sidebar {
+    order: 2;
+    position: static;
+    max-height: none;
+    margin-top: 8px;
+  }
+}
